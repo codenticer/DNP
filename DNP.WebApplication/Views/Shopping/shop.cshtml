@@ -1,0 +1,634 @@
+﻿@*@model IEnumerable<DNP.Models.Shopping.MainClassViewModel>*@
+@model DNP.Models.Shopping.MainClassViewModel
+@{
+    ViewBag.Title = "shop";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--shop  area start-->
+<div class="shop_area shop_reverse mt-0 mb-50">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-12 p-0">
+                <!--sidebar widget start-->
+                <aside class="d-none d-lg-block ">
+                    <ul class="list-tab list-inline">
+                        <li class="list-inline-item"><img src="~/assets/img/interface.png" alt="" /></li>
+                        <li class="list-inline-item"><img src="~/assets/img/ab-sorting.png" alt="" /></li>
+                    </ul>
+
+
+                    <nav class="sidebar-nav">
+                       @Html.Action("SideMenu")
+                    </nav>
+                </aside>
+                <!--sidebar widget end-->
+            </div>
+            <div class="col-lg-10 col-md-12">
+
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="breadcrumb_content">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li>Camera & Video </li>
+                                        <li>shop</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                <!--shop wrapper start-->
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="product-page-title">
+                                <h3>Universal diodes</h3>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        @Html.Action("SideMenuItem")                        
+                    </div>*@                    
+                </div>
+                <div class="tab-content">
+
+                    <div class="tab-pane fade active p-0" id="tab">
+
+                        <div class="shop_toolbar_wrapper">
+
+                            <div class=" niceselect_option">
+
+                                <form class="select_option" action="#">
+                                    <select name="orderby" id="short">
+
+                                        <option selected value="1">Sort by average rating</option>
+                                        <option value="2">Sort by popularity</option>
+                                        <option value="3">Sort by newness</option>
+                                        <option value="4">Sort by price: low to high</option>
+                                        <option value="5">Sort by price: high to low</option>
+                                        <option value="6">Product Name: Z</option>
+                                    </select>
+                                </form>
+
+
+                            </div>
+                            <div class=" niceselect_option">
+
+                                <form class="select_option" action="#">
+                                    <select name="orderby" id="short">
+
+                                        <option selected value="1">Ascending</option>
+                                        <option value="2"> descending</option>
+
+                                    </select>
+                                </form>
+
+
+                            </div>
+                            <div class="page_amount">
+                                <p>Showing 1–9 of 21 results</p>
+                            </div>
+                        </div>
+                        <!--shop toolbar end-->
+
+                        <div class="row no-gutters shop_wrapper grid_list">
+                            <!--First row-->
+                            @if (Model.Data != null)
+                            {
+                                foreach (var item in Model.Data.ProductList)
+                                {
+                                    <div class="col-12 col-sm-6 col-md-12">
+                                        <div class="single_product">
+                                            <div class="product_thumb">
+                                                <a href="#"><img src=@item.Thumbnail alt=""></a>
+                                                @*<div class="quick_button">
+                                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                                    </div>*@
+                                            </div>
+
+                                            <div class="product_content list_content">
+                                                <div class="product_name">
+                                                    <h3><a onclick="location.href='@Url.Action("ProductDetails", "Shopping")';return false;">@item.Symbol</a></h3>
+                                                </div>
+                                                <div class="product_desc">
+                                                    @*<p>Diode: rectifying; THT; 50V; 10A; Package: reel,tape; R6; Ifsm: 600A</p>*@
+                                                    <p>@item.Description</p>
+                                                </div>
+                                                <div class="product_file">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                                        <li class="list-inline-item"><a href="#">  PDF</a></li>
+                                                    </ul>
+                                                </div>
+
+                                                <div class="product_manufacturer">
+                                                    <p>Manufacturer: <a href="#"> @item.Producer</a></p>
+                                                </div>
+                                                <div class="product_manuf_part">
+                                                    <p>Manufacturer part number: <a href="#"> @item.Symbol</a></p>
+                                                </div>
+
+
+                                                <div class=" btn-section">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                        <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                        <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                        <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+                                            <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                                <div class="product_table">
+                                                    <table class="table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Quantity [pcs]  </th>
+                                                                <th>Net price [USD/pcs]:</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var priceList in item.PriceList)
+                                                            {
+                                                                <tr>
+                                                                    <td>@priceList.Amount </td>
+                                                                    <td>@priceList.PriceValue</td>
+                                                                </tr>
+                                                            }
+                                                            @*<tr>
+                                                                    <td>1+ </td>
+                                                                    <td>0.75110</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>500+ </td>
+                                                                    <td>0.75110</td>
+                                                                </tr>*@
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                                <div class="product_file">
+                                                    <p>Multiplicity: : <span> @item.Multiples</span></p>
+                                                    <p>Min. amount: : <span> @item.MinAmount</span></p>
+                                                </div>
+                                                <div class="product_variant quantity">
+                                                    <input min="1" max="100" value="1" type="number" id="txtQuantity">
+                                                </div>
+                                            </div>
+                                            <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                                <div class="price_box">
+                                                    <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                                </div>
+                                                <div class="product_del">
+                                                    <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                                </div>
+
+                                                <div class="">
+                                                    <ul class="list-inline">
+
+                                                        <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                                    </ul>
+                                                </div>
+                                                <div class="label_product">
+                                                    <span class="label_sale label_warning">
+                                                        @foreach (var productStatus in item.ProductStatusList)
+                                                        {
+                                                            @productStatus;
+                                                        }
+                                                        @*Product available till the stock lasts*@
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                        <div class="shop_toolbar t_bottom">
+                            <div id="page-selection" class="pagination">
+                                @*<ul>
+                                    @for (int i = 1; i <= Model.Data.NumberOfPage; i++)
+                                    {
+                                        @*var absolutePath = "/Shopping/Shop/" +i;
+                                            <li><a href='+ absolutePath +'>i</a></li>*@
+                                @*<li><a href="/Shopping/Shop/?pageCount=@i">@i</a></li>*@
+
+                                @*<li><a href="<%=Url.Action("Shop","Shopping", new { pageCount=@i }) %>">@i</a></li>*@
+                                @*}*@
+                                @*<li class="next"><a href="#">next</a></li>*@
+                                @*<li class="current">1</li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+
+                                    <li><a href="#">>></a></li>*@
+                                @*</ul>*@
+                            </div>
+                        </div>
+                        <!--shop toolbar end-->
+
+                    </div>
+
+                    <div class="tab-pane fade" id="tab1">
+
+                        <div class="shop_toolbar_wrapper">
+
+                            <div class=" niceselect_option">
+
+                                <form class="select_option" action="#">
+                                    <select name="orderby" id="short">
+
+                                        <option selected value="1">Sort by average rating</option>
+                                        <option value="2">Sort by popularity</option>
+                                        <option value="3">Sort by newness</option>
+                                        <option value="4">Sort by price: low to high</option>
+                                        <option value="5">Sort by price: high to low</option>
+                                        <option value="6">Product Name: Z</option>
+                                    </select>
+                                </form>
+
+
+                            </div>
+                            <div class=" niceselect_option">
+
+                                <form class="select_option" action="#">
+                                    <select name="orderby" id="short">
+
+                                        <option selected value="1">Ascending</option>
+                                        <option value="2"> descending</option>
+
+                                    </select>
+                                </form>
+
+
+                            </div>
+                            <div class="page_amount">
+                                <p>Showing 1–9 of 21 results</p>
+                            </div>
+                        </div>
+                        <!--shop toolbar end-->
+
+                        <div class="row no-gutters shop_wrapper grid_list">
+                            <div class="col-12 col-sm-6 col-md-12">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        <div class="quick_button">
+                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="product_content list_content">
+                                        <div class="product_name">
+                                            <h3><a onclick="location.href='@Url.Action("ProductDetails", "Shopping")';return false;">10A01-T</a></h3>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>Diode: rectifying; THT; 50V; 10A; Package: reel,tape; R6; Ifsm: 600A</p>
+                                        </div>
+                                        <div class="product_file">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                                <li class="list-inline-item"><a href="#">  PDF</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="product_manufacturer">
+                                            <p>Manufacturer: <a href="#"> DIODES INCORPORATED</a></p>
+                                        </div>
+                                        <div class="product_manuf_part">
+                                            <p>Manufacturer part number: <a href="#"> 10A01-T</a></p>
+                                        </div>
+
+
+                                        <div class=" btn-section">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                        <div class="product_table">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Quantity [pcs]  </th>
+                                                        <th>Net price [USD/pcs]:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>500+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                        <div class="product_file">
+                                            <p>Multiplicity: : <span> 10</span></p>
+                                            <p>Min. amount: : <span> 10</span></p>
+                                        </div>
+                                        <div class="product_variant quantity">
+                                            <input min="1" max="100" value="1" type="number" id="txtQuantity">
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                        <div class="price_box">
+                                            <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                        </div>
+                                        <div class="product_del">
+                                            <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                        </div>
+
+                                        <div class="">
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="label_product">
+                                            <span class="label_sale label_warning">
+                                                Product available till the stock lasts
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6 col-md-12">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        <div class="quick_button">
+                                            <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="product_content list_content">
+                                        <div class="product_name">
+                                            <h3><a onclick="location.href='@Url.Action("ProductDetails", "Shopping")';return false;">10A01-T</a></h3>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>Diode: rectifying; THT; 50V; 10A; Package: reel,tape; R6; Ifsm: 600A</p>
+                                        </div>
+                                        <div class="product_file">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                                <li class="list-inline-item"><a href="#">  PDF</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="product_manufacturer">
+                                            <p>Manufacturer: <a href="#"> DIODES INCORPORATED</a></p>
+                                        </div>
+                                        <div class="product_manuf_part">
+                                            <p>Manufacturer part number: <a href="#"> 10A01-T</a></p>
+                                        </div>
+
+
+                                        <div class=" btn-section">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                        <div class="product_table">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Quantity [pcs]  </th>
+                                                        <th>Net price [USD/pcs]:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>1+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>500+ </td>
+                                                        <td>0.75110</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                        <div class="product_file">
+                                            <p>Multiplicity: : <span> 10</span></p>
+                                            <p>Min. amount: : <span> 10</span></p>
+                                        </div>
+                                        <div class="product_variant quantity">
+                                            <input min="1" max="100" value="1" type="number" id="txtQuantity">
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                        <div class="price_box">
+                                            <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                        </div>
+                                        <div class="product_del">
+                                            <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                        </div>
+
+                                        <div class="">
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item"><a onclick="AddToCart()" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="label_product">
+                                            <span class="label_sale label_warning">
+                                                Product available till the stock lasts
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="shop_toolbar t_bottom">
+                            <div class="pagination">
+                                <ul>
+                                    <li class="current">1</li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li class="next"><a href="#">next</a></li>
+                                    <li><a href="#">>></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--shop toolbar end-->
+
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+<!-- modal area start-->
+<div class="modal fade" id="modal_box" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="modal_body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="modal_tab">
+                                <div class="tab-content product-details-large">
+                                    <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab2" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab4" role="tabpanel">
+                                        <div class="modal_tab_img">
+                                            <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal_tab_button">
+                                    <ul class="nav product_navactive owl-carousel" role="tablist">
+                                        <li>
+                                            <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link button_three" data-toggle="tab" href="#tab3" role="tab" aria-controls="tab3" aria-selected="false"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </li>
+                                        <li>
+                                            <a class="nav-link" data-toggle="tab" href="#tab4" role="tab" aria-controls="tab4" aria-selected="false"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal area end-->
+
+<script>
+    function AddToCart(){
+        //var forgotpassword = {
+        //        Email:$("#txtEmail").val()
+        //    }
+        //var txtQuantity= $("#txtQuantity").val();
+        debugger;
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("AddToCart")',
+                data: { quantity: $('#txtQuantity').val()},
+                dataType: "json",
+                success: function (data) {
+                    debugger;
+                    //$("#cartValues").val(data);
+                    $("#cartValues").text("Cart " + data);
+                    //alert("success!");
+
+                },
+                error: function () {
+                    alert("Error while inserting data");
+                }
+            });
+    }
+</script>
+
+<script>
+    //// init bootpag
+    //$('#page-selection').bootpag({
+    //    total: 10
+    //}).on("page", function (event, /* page number here */ num) {
+    //    //$("#content").html("Insert content"); // some ajax content loading...
+    //});
+    $('#page-selection').bootpag({
+        total:@Model.Data.NumberOfPage,
+        page: 1,
+        maxVisible: 5,
+        leaps: true,
+        firstLastUse: true,
+        first: '←',
+        last: '→',
+        wrapClass: 'pagination',
+        activeClass: 'active',
+        disabledClass: 'disabled',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first'
+    }).on("page", function (event, num) {
+        location.href = "/Shopping/Shop?pageCount=" + num;
+    });
+
+</script>

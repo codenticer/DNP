@@ -1,0 +1,11 @@
+﻿@model DNP.Models.Shopping.MainClassViewModel
+<ul>
+    @foreach (var item in Model.Data.CategoryTree.SubTree)
+    {        
+        <li>
+            <a class="has-arrow" href="~/Shopping/ProductList/@item.Id" aria-expanded="false">@item.Name</a>            
+        </li>
+    }
+
+</ul>
+

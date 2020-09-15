@@ -1,0 +1,36 @@
+﻿@model DNP.Models.Shopping.MainClassViewModel
+<ul class="metismenu" id="verticaltag">
+    @foreach (var item in Model.Data.CategoryTree.SubTree)
+    {
+        @*<li class="mm-active">*@
+        <li>
+            <a class="has-arrow" href="#" aria-expanded="false">@item.Name</a>
+            <ul class="metismenu" id="verticaltag">
+                @foreach (var subtree1 in item.Subtree)
+                {
+                    <li>
+                        <a class="has-arrow" href="#" aria-expanded="false">@subtree1.Name (@subtree1.TotalProducts)</a>
+                        <ul class="metismenu" id="verticaltag">
+                            @foreach (var subtree2 in subtree1.SubTree)
+                            {
+                                <li>
+                                    <a class="has-arrow" href="#" aria-expanded="false">@subtree2.Name (@subtree2.TotalProducts)</a>
+                                    <ul class="metismenu" id="verticaltag">
+                                        @foreach (var subtree3 in subtree2.SubTree)
+                                        {
+                                            <li>
+                                                <a href="~/Shopping/ProductList/@subtree3.Id">@subtree3.Name (@subtree3.TotalProducts)</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+
+        </li>
+    }
+
+</ul>

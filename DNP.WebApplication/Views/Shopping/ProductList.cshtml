@@ -1,0 +1,480 @@
+﻿@model DNP.Models.Shopping.MainClassViewModel
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    var fileURL = "";
+}
+
+<!--Offcanvas menu area start-->
+
+<div class="off_canvars_overlay">
+
+</div>
+<div class="Offcanvas_menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="Offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                        <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                    </div>
+                    <div class="search-container">
+                        <form action="#">
+                            <div class="hover_category">
+                                <select class="select_option" name="select" id="categori2">
+                                    <option selected value="1">All</option>
+                                    <option value="2">Accessories</option>
+                                    <option value="3">Accessories</option>
+                                </select>
+                            </div>
+                            <div class="search_box">
+                                <input placeholder="Search product..." type="text">
+                                <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="Offcanvas_tab">
+                        <ul class="nav nav-pills nav-justified" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#home">Primary Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#menu1">Product Menu</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="container tab-pane active">
+                                <br>
+                                <div id="menu" class="text-left ">
+                                    <ul class="offcanvas_main_menu">
+                                        <li class="menu-item-has-children active">
+                                            <a href="#">Home</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="">Home 1</a></li>
+                                                <li><a href="">Home 2</a></li>
+                                                <li><a href="">Home 3</a></li>
+                                                <li><a href="">Home 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Shop</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">blog</a>
+                                        </li>
+
+                                        <li class="menu-item-has-children">
+                                            <a href="">about Us</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href=""> Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>                            
+
+                        </div>
+
+                    </div>
+                    <div class="Offcanvas_footer">
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@Electronic.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Offcanvas menu area end-->
+<!--shop  area start-->
+<div class="shop_area shop_reverse mt-0 mb-2">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-lg-2 col-md-12 p-0">
+                <!--sidebar widget start-->
+                <aside class="d-none d-lg-block ">
+                    <ul class="list-tab list-inline">
+                        <li class="list-inline-item"><img src="~/assets/img/interface.png" alt="" /></li>
+                        <li class="list-inline-item"><img src="~/assets/img/ab-sorting.png" alt="" /></li>
+                    </ul>
+
+
+                    <nav class="sidebar-nav">
+                        @Html.Action("SideMenu")
+                    </nav>
+                </aside>
+                <!--sidebar widget end-->
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>TME NEWSLETTER</h6>
+                    </div>
+                    <div class="media-desc">
+                        <p>Information about events, promotions and new products straight to Your mailbox.</p>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm">Subscribe </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>OUR COMPANY</h6>
+                    </div>
+                    <div class="media-desc">
+                        <p>TME has over <strong>800 employees</strong>, who provide expert support at each stage of the ordering process.</p>
+                        <p>Our offer includes <strong>350,000 electronic components</strong> from <strong>950 producers</strong>.</p>
+                        <p><strong>Since 1990,</strong> we have been expanding our operations dynamically and increasing our global potential. Every day, we send <strong>5000 shipments</strong> and we ensure that they arrive in the shortest time available.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>Join Now</h6>
+                    </div>
+                    <div class="priduct_social">
+                        <ul>
+                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> </a></li>
+                            <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> </a></li>
+                            <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> </a></li>
+                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-10 col-md-12">
+
+
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="breadcrumb_content">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li>Camera & Video </li>
+                                        <li>shop</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="product-page-title">
+                                <h3>@Model.Data.CategoryTree.Name</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @Html.Action("SideMenuItem", new { id = Model.Data.CategoryTree.Id })
+                    </div>
+                </div>
+                <!--product info start-->
+                <div class="product_d_info">                    
+                </div>
+                <!-- Nav pills -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#tab">All found (@Model.Data.CategoryTree.TotalProducts)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#tab1"> Show new products only (686)</a>
+                    </li>
+                </ul>
+                <!--product info end-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-page-title">
+                            @*<h3>Related products - 165000.1</h3>*@
+                            <h3>Related products - @Model.Data.CategoryTree.Id</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop_toolbar_wrapper">
+
+                    <div class=" niceselect_option" style="display: none;">
+
+                        <form class="select_option" action="#" style="display: none;">
+                            <select name="orderby" id="short">
+
+                                <option selected="" value="1">Sort by average rating</option>
+                                <option value="2">Sort by popularity</option>
+                                <option value="3">Sort by newness</option>
+                                <option value="4">Sort by price: low to high</option>
+                                <option value="5">Sort by price: high to low</option>
+                                <option value="6">Product Name: Z</option>
+                            </select>
+                        </form><div class="nice-select select_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+
+
+                    </div><div class="nice-select niceselect_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+                    <div class=" niceselect_option" style="display: none;">
+
+                        <form class="select_option" action="#" style="display: none;">
+                            <select name="orderby" id="short">
+
+                                <option selected="" value="1">Ascending</option>
+                                <option value="2"> descending</option>
+
+                            </select>
+                        </form><div class="nice-select select_option" tabindex="0"><span class="current">Ascending</span><ul class="list"><li data-value="1" class="option selected">Ascending</li><li data-value="2" class="option"> descending</li></ul></div>
+
+
+                    </div><div class="nice-select niceselect_option" tabindex="0"><span class="current">Ascending</span><ul class="list"><li data-value="1" class="option selected">Ascending</li><li data-value="2" class="option"> descending</li></ul></div>
+                    <div class="page_amount">
+                        <p>Showing @Model.Data.PageCount-50 of @Model.Data.NumberOfPage results</p>
+                    </div>
+                </div>
+                <div class="row no-gutters shop_wrapper grid_list">
+                    @if (Model.Data != null)
+                    {
+                        foreach (var item in Model.Data.ProductList)
+                        {
+                            <div class="col-12 col-sm-6 col-md-12">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a href="#"><img src="@item.Thumbnail" alt=""></a>
+                                        <label style="display:none" id="lblSymbol">@item.Symbol</label>
+                                        @*<div class="quick_button">
+                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                            </div>*@
+
+                                    </div>
+
+                                    <div class="product_content list_content">
+                                        <div class="product_name">
+                                            <h3><a href="/Shopping/ProductDetails/@item.Symbol">@item.Symbol</a></h3>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>@item.Description</p>
+                                        </div>
+                                        <div class="product_file">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                                @foreach (var file in item.Files.DocumentList)
+                                                {
+                                                    if (Model.Data.Language == file.Language)
+                                                    {
+                                                        fileURL = file.DocumentUrl;
+                                                        break;
+                                                    }
+
+                                                }
+                                                <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#myModal">  PDF</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal fade" id="myModal">
+                                            <div class="modal-dialog modal-xl">
+                                                <div class="modal-content">                                                    
+                                                    <div class="modal-body p-0">
+                                                        <button type="button" class="close" data-dismiss="modal" style="color:red; top: 0px; left: 95%;">&times;</button>
+                                                        @*<embed src="@fileURL+ '&output=embed';" frameborder="0" width="100%" style="height: 90vh;">*@
+                                                        <iframe width="560" height="315" src="@fileURL" frameborder="0" allowfullscreen></iframe>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="product_manufacturer">
+                                            <p>Manufacturer: <a href="#">  @item.Producer</a></p>
+                                        </div>
+                                        <div class="product_manuf_part">
+                                            <p>Manufacturer part number: <a href="#"> @item.Symbol</a></p>
+                                        </div>
+
+
+                                        <div class=" btn-section">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                <li class="list-inline-item"><a class="btn btn-gray btn-sm" onclick="setCartData('@item.Symbol');"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                        <div class="product_table">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Quantity [pcs]  </th>
+                                                        <th>Net price [USD/pcs]:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var priceList in item.PriceList)
+                                                    {
+                                                        <tr>
+                                                            <td>@priceList.Amount </td>
+                                                            <td>@priceList.PriceValue</td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                        <div class="product_file">
+                                            <p>Multiplicity: : <span>  @item.Multiples</span></p>
+                                            <p>Min. amount: : <span id="minAmount_@item.Symbol">  @item.MinAmount</span></p>
+                                        </div>
+                                        <div class="product_variant quantity">
+                                            @*<input min="1" max="100" value="1" type="number" id='txtNumOfProduct_@item.Symbol'>*@
+                                            <input max="100" value="@item.MinAmount" type="number" id='txtNumOfProduct_@item.Symbol'>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                        <div class="price_box">
+                                            <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                        </div>
+                                        <div class="product_del">
+                                            <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                        </div>
+
+                                        <div class="">
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item"><a onclick="setCartData('@item.Symbol');" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="label_product">
+                                            <span class="label_sale label_warning">
+                                                @foreach (var productStatus in item.ProductStatusList)
+                                                {
+                                                    @productStatus;
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+                <div class="shop_toolbar t_bottom">
+                    <div id="page-selection" class="pagination">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+
+
+
+
+<script>   
+
+    function setCartData(symbol) {
+        debugger;
+        var numOfCount = $("#txtNumOfProduct_" + symbol).val();
+        var minAmount = $("#minAmount_" + symbol).text();
+        if (parseInt(numOfCount) < parseInt(minAmount)) {
+            toastr.error("Num of item should be greater than min amount", 'Error');
+            return false;
+        }
+        var exitingCartValue = $("#cartValues").text();
+        if (exitingCartValue == "NaN" || exitingCartValue == "")
+            exitingCartValue = 0;
+        var newCartValue =parseInt(exitingCartValue) +parseInt(numOfCount);
+        $("#cartValues").text(newCartValue);
+
+        var valdata = {
+            id: symbol,
+            productCount: numOfCount
+        };
+
+        $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToCart", "Shopping")',
+                    data: valdata,
+                    dataType: "json",
+                    success: function () {
+                        toastr.success("Product added to cart", 'Success');
+                    },
+                    error: function () {
+                        toastr.error("Error while adding into cart", 'Error');
+                    }
+                });
+    };
+    @*$(document).on("click", "#addToCart", function () {
+        debugger;
+
+        var valdata = {
+            id: this.$("#lblSymbol").text()
+        };
+        alert($("#lblSymbol").text());
+        return false;
+        $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("AddToCart", "Shopping")',
+                    data: valdata,
+                    dataType: "json",
+                    success: function () {
+                        alert("added product to cart");
+                    },
+                    error: function () {
+                        alert("Error while registration.");
+                    }
+                });
+
+    });*@
+    $('#page-selection').bootpag({
+        total:@Model.Data.NumberOfPage,
+        page: @Model.Data.PageCount,
+        maxVisible: 10,
+        leaps: true,
+        firstLastUse: true,
+        first: '←',
+        last: '→',
+        wrapClass: 'pagination',
+        activeClass: 'active',
+        disabledClass: 'disabled',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first'
+    }).on("page", function (event, num) {
+        location.href = "/Shopping/ProductList?id=@Model.Data.CategoryTree.Id&pageCount=" + num;
+    });
+</script>
+

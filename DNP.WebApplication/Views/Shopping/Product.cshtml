@@ -1,0 +1,74 @@
+﻿@model DNP.Models.Shopping.MainClassViewModel
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--shop  area start-->
+<div class="shop_area shop_reverse mt-0 mb-50">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-md-12 p-0">
+                <!--sidebar widget start-->
+                <aside class="d-none d-lg-block ">
+                    <ul class="list-tab list-inline">
+                        <li class="list-inline-item"><img src="~/assets/img/interface.png" alt="" /></li>
+                        <li class="list-inline-item"><img src="~/assets/img/ab-sorting.png" alt="" /></li>
+                    </ul>
+
+
+                    <nav class="sidebar-nav">
+                        @Html.Action("SideMenu")
+                    </nav>
+                </aside>
+                <!--sidebar widget end-->
+            </div>
+            <div class="col-lg-10 col-md-12">
+
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="breadcrumb_content">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li>Camera & Video </li>
+                                        <li>shop</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                <!--shop wrapper start-->
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="product-page-title">
+                                <h3>@Model.Data.CategoryTree.Name</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @foreach (var item in Model.Data.CategoryTree.SubTree)
+                        {
+                            <div class="col-md-4 col-sm-4 col-6">
+                                <div class="img-section">
+                                    <a href="~/Shopping/Product/@item.Id">@item.Name (@item.TotalProducts)</a>
+                                    <img src="@item.Thumbnail" class="img-fluid img-thumbnail" alt="San Fran">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>               
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+
+
+

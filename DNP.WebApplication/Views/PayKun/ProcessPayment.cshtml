@@ -1,0 +1,341 @@
+﻿@model DNP.Models.Paykun.PaykumUserViewModel
+@{
+    ViewBag.Title = "ProcessPayment";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    double totalAmount = 0.0;
+}
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>Shopping Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Checkout page section-->
+<div class="Checkout_section mt-4">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="user-actions">
+                    <h3>
+                        <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_bill">Billing Details</a>
+
+                    </h3>
+
+                    <div id="checkout_bill" class="collapse show">
+                        <div class="checkout_form">
+                            <div class="checkout_info">
+
+
+
+                                <form action="#">
+
+                                    <div class="row">
+                                        <input type="hidden" id="txtFullName" value="@Model.FullName" />
+                                        <input type="hidden" id="txtProductName" value="@Model.ProductName" />
+                                        <div class="col-lg-6 mb-20">
+                                            <label>First Name <span>*</span></label>
+                                            <input type="text" value="@Model.ContactFirstName">
+                                        </div>
+                                        <div class="col-lg-6 mb-20">
+                                            <label>Last Name  <span>*</span></label>
+                                            <input type="text" value="@Model.ContactLastName">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label>Company Name</label>
+                                            <input type="text" value="@Model.CompanyName">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label for="country">country <span>*</span></label>
+                                            <input type="text" id="txtCountry" value="@Model.CountryName">
+                                            @*<select class="niceselect_option" name="cuntry" id="country">
+            <option value="2">bangladesh</option>
+            <option value="3">Algeria</option>
+            <option value="4">Afghanistan</option>
+            <option value="5">Ghana</option>
+            <option value="6">Albania</option>
+            <option value="7">Bahrain</option>
+            <option value="8">Colombia</option>
+            <option value="9">Dominican Republic</option>
+
+        </select>*@
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <label>Street address  <span>*</span></label>
+                                            <input placeholder="House number and street name" type="text" id="txtAddress" value="@Model.Address">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label>Town / City <span>*</span></label>
+                                            <input type="text" id="txtCity" value="@Model.CityName">
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <label>State / County <span>*</span></label>
+                                            <input type="text" id="txtState" value="@Model.StateName">
+                                        </div>
+                                        <div class="col-lg-6 mb-20">
+                                            <label> Zip Code   <span>*</span></label>
+                                            <input type="text" id="txtZipCode" value="@Model.ZipCode">
+
+                                        </div>
+                                        <div class="col-lg-6 mb-20">
+                                            <label>Phone<span>*</span></label>
+                                            <input type="text" id="txtContactNumber" value="@Model.ContactMobile">
+
+                                        </div>
+                                        <div class="col-lg-6 mb-20">
+                                            <label> Email Address   <span>*</span></label>
+                                            <input type="text" id="txtEmail" value="@Model.Email">
+
+                                        </div>
+
+                                        <div class="col-12 mb-20">
+                                            <input id="account" type="checkbox" data-target="createp_account" />
+                                            <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
+
+                                            <div id="collapseOne" class="collapse one" data-parent="#accordion">
+                                                <div class="card-body1">
+                                                    <label> Account password   <span>*</span></label>
+                                                    <input placeholder="password" type="password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mb-20">
+                                            <input id="address" type="checkbox" data-target="createp_account" />
+                                            <label class="btn btn-danger btn-md order-btn righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
+
+                                            <div id="collapsetwo" class="collapse one" data-parent="#accordion">
+                                                <div class="row">
+                                                    <div class="col-lg-6 mb-20">
+                                                        <label>First Name <span>*</span></label>
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="col-lg-6 mb-20">
+                                                        <label>Last Name  <span>*</span></label>
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="col-12 mb-20">
+                                                        <label>Company Name</label>
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="col-12 mb-20">
+                                                        <div class="select_form_select">
+                                                            <label for="countru_name">country <span>*</span></label>
+                                                            @*<select class="niceselect_option" name="cuntry" id="countru_name">
+            <option value="2">bangladesh</option>
+            <option value="3">Algeria</option>
+            <option value="4">Afghanistan</option>
+            <option value="5">Ghana</option>
+            <option value="6">Albania</option>
+            <option value="7">Bahrain</option>
+            <option value="8">Colombia</option>
+            <option value="9">Dominican Republic</option>
+
+        </select>*@
+                                                            <input type="text">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mb-20">
+                                                        <label>Street address  <span>*</span></label>
+                                                        <input placeholder="House number and street name" type="text" >
+                                                    </div>
+                                                    <div class="col-12 mb-20">
+                                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">
+                                                    </div>
+                                                    <div class="col-12 mb-20">
+                                                        <label>Town / City <span>*</span></label>
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="col-12 mb-20">
+                                                        <label>State / County <span>*</span></label>
+                                                        <input type="text">
+                                                    </div>
+                                                    <div class="col-lg-6 mb-20">
+                                                        <label>Phone<span>*</span></label>
+                                                        <input type="text">
+
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <label> Email Address   <span>*</span></label>
+                                                        <input type="text">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="order-notes">
+                                                <label for="order_note">Order Notes</label>
+                                                <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                
+                <div class="user-actions">                   
+                    <div id="checkout_coupon" class="collapse show">
+                        <div class="checkout_info">
+                            <form action="#">
+                                <input placeholder="Coupon code" type="text">
+                                <button type="button" class="btn btn-danger btn-md order-btn">Apply coupon</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6">
+                <div class="user-actions">
+                    <form action="#">
+                        <h3>Your order</h3>
+                        <div class="order_table table-responsive mt-4">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.cartDetailsViewModel.ProductList)
+                                    {
+                                        var amount = item.ProductCount * item.BaseAmount;
+                                        totalAmount += amount;
+                                    <tr>
+                                        <td> @item.Symbol <strong> × @item.ProductCount</strong></td>
+                                        <td> @amount</td>
+                                    </tr>    
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Cart Subtotal</th>
+                                        <td>@totalAmount</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Shipping</th>
+                                        <td><strong>0</strong></td>
+                                    </tr>
+                                    <tr class="order_total">
+                                        <th>Order Total</th>
+                                        <td id="totalAmount">@totalAmount</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>                       
+                        <div class="order_button mt-3">
+                            <button id="btnSubmit" onclick="SubmitPayment()" class="btn btn-danger btn-md order-btn ">Proceed to Payment</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+    
+<!--Checkout page section end-->
+@*<div>
+            <table>
+                <tr>
+                    <td><label>Full name</label></td>
+                    <td>
+                        <input type="text" id="txtFullName" value="@Model.FullName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Product Name</label></td>
+                    <td>
+                        <input type="text" id="txtProductName" value="@Model.ProductName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Email</label></td>
+                    <td>
+                        <input type="text" id="txtEmail" value="@Model.Email">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Amount</label></td>
+                    <td>
+                        <input type="text" id="txtAmount" value="@Model.Amount">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Contact No</label></td>
+                    <td>
+                        <input type="text" id="txtContactNumber" value="@Model.ContactMobile">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Country</label></td>
+                    <td>
+                        <input type="text" id="txtCountry" value="@Model.CountryName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>State</label></td>
+                    <td>
+                        <input type="text" id="txtState" value="@Model.StateName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>City</label></td>
+
+                    <td>
+                        <input type="text" id="txtCity" value="@Model.CityName">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Zip Code</label></td>
+                    <td>
+                        <input type="text" id="txtZipCode" value="@Model.ZipCode">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Address</label></td>
+                    <td>
+                        <textarea id="txtTextArea" value="@Model.Address"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <center colspan="2">
+                            <button id="btnSubmit" onclick="SubmitPayment()">Submit</button>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    <div id="payment_form">
+        <label ID="PaymentinnerForm" />
+    </div>*@
+<div id="payment_form">
+    <label ID="PaymentinnerForm" />
+</div>
+
+<script src="~/Scripts/CustomJS/Payment.js"></script>
+
+

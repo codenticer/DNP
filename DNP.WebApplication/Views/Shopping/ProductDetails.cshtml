@@ -1,0 +1,831 @@
+﻿@model DNP.Models.Shopping.RelatedProductViewModel
+@{
+    ViewBag.Title = "ProductDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<!--Offcanvas menu area start-->
+
+<div class="off_canvars_overlay">
+
+</div>
+<div class="Offcanvas_menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="Offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                        <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                    </div>
+                    <div class="search-container">
+                        <form action="#">
+                            <div class="hover_category">
+                                <select class="select_option" name="select" id="categori2">
+                                    <option selected value="1">All</option>
+                                    <option value="2">Accessories</option>
+                                    <option value="3">Accessories</option>
+                                </select>
+                            </div>
+                            <div class="search_box">
+                                <input placeholder="Search product..." type="text">
+                                <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="Offcanvas_tab">
+                        <ul class="nav nav-pills nav-justified" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#home">Primary Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#menu1">Product Menu</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="container tab-pane active">
+                                <br>
+                                <div id="menu" class="text-left ">
+                                    <ul class="offcanvas_main_menu">
+                                        <li class="menu-item-has-children active">
+                                            <a href="#">Home</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="">Home 1</a></li>
+                                                <li><a href="">Home 2</a></li>
+                                                <li><a href="">Home 3</a></li>
+                                                <li><a href="">Home 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Shop</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">blog</a>
+                                        </li>
+
+                                        <li class="menu-item-has-children">
+                                            <a href="">about Us</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href=""> Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="menu1" class="container tab-pane fade">
+                                <br>
+                                <div id="menu2" class="text-left ">
+                                    <ul class="offcanvas_main_menu">
+                                        <li class="menu-item-has-children active">
+                                            <a href="#">Semiconductors</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                <li><a href="#">Discrete</a></li>
+                                                <li><a href="#">Embedded Computers</a></li>
+                                                <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                <li><a href="#"> Isolators</a></li>
+                                                <li><a href="#">LED/Optoelectronics</a></li>
+                                                <li><a href="#">RF, Wireless</a></li>
+                                                <li><a href="#">RF, Wireless</a></li>
+                                                <li><a href="#">Sensors, Transducers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Passives</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Capacitors</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Discrete</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Embedded Computers</a></li>
+                                                                <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                                <li><a href="#"> Isolators</a></li>
+                                                                <li><a href="#">LED/Optoelectronics</a></li>
+                                                                <li><a href="#">RF, Wireless</a></li>
+                                                                <li><a href="#">RF, Wireless</a></li>
+                                                                <li><a href="#">Sensors, Transducers</a></li>
+                                                            </ul>
+
+                                                        </li>
+                                                        <li><a href="#">Embedded Computers</a></li>
+                                                        <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                        <li><a href="#"> Isolators</a></li>
+                                                        <li><a href="#">LED/Optoelectronics</a></li>
+                                                        <li><a href="#">RF, Wireless</a></li>
+                                                        <li><a href="#">RF, Wireless</a></li>
+                                                        <li><a href="#">Sensors, Transducers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Crystals, Oscillators</a></li>
+                                                <li><a href="#">Filters</a></li>
+                                                <li><a href="#"> Inductors, Coils, Chokes</a></li>
+                                                <li><a href="#">Potentiometers, Variable Resistors</a></li>
+                                                <li><a href="#">Resistors</a></li>
+                                                <li><a href="#">Thermal Management</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Electromechanical</a>
+                                        </li>
+
+                                        <li class="menu-item-has-children">
+                                            <a href="">Power, Circuit Protection</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href=""> Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="Offcanvas_footer">
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@Electronic.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Offcanvas menu area end-->
+<!--shop  area start-->
+<div class="shop_area shop_reverse mt-0 mb-2">
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-lg-2 col-md-12 p-0">
+                <!--sidebar widget start-->
+                <aside class="d-none d-lg-block ">
+                    <ul class="list-tab list-inline">
+                        <li class="list-inline-item"><img src="~/assets/img/interface.png" alt="" /></li>
+                        <li class="list-inline-item"><img src="~/assets/img/ab-sorting.png" alt="" /></li>
+                    </ul>
+
+
+                    <nav class="sidebar-nav">
+                        @Html.Action("SideMenu")
+                    </nav>
+                </aside>
+                <!--sidebar widget end-->
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>TME NEWSLETTER</h6>
+                    </div>
+                    <div class="media-desc">
+                        <p>Information about events, promotions and new products straight to Your mailbox.</p>
+                        <div>
+                            <button type="button" class="btn btn-danger btn-sm">Subscribe </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>OUR COMPANY</h6>
+                    </div>
+                    <div class="media-desc">
+                        <p>TME has over <strong>800 employees</strong>, who provide expert support at each stage of the ordering process.</p>
+                        <p>Our offer includes <strong>350,000 electronic components</strong> from <strong>950 producers</strong>.</p>
+                        <p><strong>Since 1990,</strong> we have been expanding our operations dynamically and increasing our global potential. Every day, we send <strong>5000 shipments</strong> and we ensure that they arrive in the shortest time available.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="product_d_right media-box mt-3">
+                    <div class=" medi-text">
+                        <h6>Join Now</h6>
+                    </div>
+                    <div class="priduct_social">
+                        <ul>
+                            <li><a class="facebook" href="#" title="facebook"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="twitter" href="#" title="twitter"><i class="fa fa-twitter"></i> </a></li>
+                            <li><a class="pinterest" href="#" title="pinterest"><i class="fa fa-pinterest"></i> </a></li>
+                            <li><a class="google-plus" href="#" title="google +"><i class="fa fa-google-plus"></i> </a></li>
+                            <li><a class="linkedin" href="#" title="linkedin"><i class="fa fa-linkedin"></i> </a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-10 col-md-12">
+
+
+                <!--breadcrumbs area start-->
+                <div class="breadcrumbs_area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="breadcrumb_content">
+                                    <ul>
+                                        <li><a href="index.html">home</a></li>
+                                        <li>Camera & Video </li>
+                                        <li>shop</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--breadcrumbs area end-->
+                <!--product details start-->
+                <div class="product_details mt-3 mb-3">
+
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="product-details-tab">
+                                <div id="img-1" class="">
+                                    <a href="#">
+                                        <img src="@Model.Data.ProductDescription.Photo" class="img-fluid">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-6">
+                            <div class="product_d_right">
+                                <div class="product_desc_name">
+                                    <h4>@Model.Data.ProductDescription.Category</h4>
+                                </div>
+                                <div class="product_desc">
+                                    <div class="product_manufacturer">
+                                        <p> <b>TME Symbol: </b> @Model.Data.ProductDescription.Symbol</p>
+                                    </div>
+                                    <div class="product_manufacturer">
+                                        <p><b> Manufacturer:</b> <a href="#">  @Model.Data.ProductDescription.Producer</a></p>
+                                    </div>
+                                    <div class="product_manuf_part">
+                                        <p><b>Manufacturer part number: </b> <a href="#"> @Model.Data.ProductDescription.Symbol</a></p>
+                                    </div>
+                                    <div class="product_manufacturer">
+                                        <p><b>Catalogue description: </b><a href="#">  @Model.Data.ProductDescription.Description</a></p>
+                                    </div>
+                                </div>
+                                <div class="row product_desc_box mx-0">
+                                    <div class="add-order col-md-4">
+                                        <h6>ADD TO THE ORDER</h6>
+                                        <table class="table table-borderless">
+
+                                            <tbody>
+                                                <tr>
+                                                    <td>Stock level:</td>
+                                                    <td>0pcs</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Deliveries to the warehouse</td>
+                                                    <td><a href="#">check</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Min. amount:</td>
+                                                    <td>@Model.Data.ProductDescription.MinAmount</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Multiplicity:</td>
+                                                    <td>@Model.Data.ProductDescription.Multiples</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                        <div class=" btn-section">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-range col-md-4">
+                                        <h6>PRICE RANGE</h6>
+
+                                        <div class="label_product">
+                                            <span class="label_sale label_warning">
+                                                Product available till the stocks
+                                            </span>
+                                        </div>
+                                        <div class="cont-link pt-2">
+                                            <p>Contact: <a href="#"> </a></p>
+                                            <p>Email: <a href="#"> </a></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="addition-info col-md-4">
+                                        <h6>ADDITIONAL INFORMATION</h6>
+                                        <div class="addition-link">
+                                            <p><a href="#"> Means and cost of transport</a></p>
+                                            <p><a href="#"> Payments</a></p>
+                                            <p><a href="#"> Time of delivery</a></p>
+                                            <p>Do you have any questions?</p>
+                                            <p> <a href="#"> +48 42 645 54 44</a></p>
+                                            <p><a href="#"> export@tme.eu</a></p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--product details end-->
+                <!--product info start-->
+                <div class="product_d_info">
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="product_d_inner">
+                                <div class="product_info_button">
+                                    <ul class="nav" role="tablist">
+                                        <li>
+                                            <a class="active" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Specification</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#sheet" role="tab" aria-controls="sheet" aria-selected="false">Technical Information</a>
+                                        </li>
+                                        <li>
+                                            <a data-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Multimedia</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content pb-0">
+                                    <div class="tab-pane fade show active" id="info" role="tabpanel">
+                                        <div class="product_d_table pb-0">
+                                            <form action="#">
+                                                <table class="table table-striped table-spec">
+
+                                                    <tbody>
+                                                        <tr>
+                                                            <td colspan="3" style="text-align: right;">
+                                                                <button type="button" class="btn btn-danger btn-sm">
+                                                                    Show similar products
+
+                                                                </button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="odd">
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Manufacturer
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                @Model.Data.ProductDescription.Producer
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Type of fuse
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                fuse
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="odd">
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Fuse characteristics
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                medium time-lag
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Breaking capacity
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                35A
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="odd">
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Current rating
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                1A
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Rated voltage
+                                                                </label>
+
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                250V AC
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="odd">
+                                                            <td class="col-md-4">
+                                                                <label>
+                                                                    Kind of fuse
+                                                                </label>
+                                                            </td>
+                                                            <td class="col-md-6">
+                                                                miniature
+                                                            </td>
+                                                            <td>
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" value="">
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </form>
+                                        </div>
+
+                                    </div>
+                                    <div class="tab-pane fade" id="sheet" role="tabpanel">
+
+                                        <div class="product_info_content">
+                                            <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                                        <div class="product_info_content">
+                                            <p>Fashion has been creating well-designed collections since 2010. The brand offers feminine designs delivering stylish separates and statement dresses which have since evolved into a full ready-to-wear collection in which every item is a vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and unmistakable signature style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now Fashion extends to a range of accessories including shoes, hats, belts and more!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--product info end-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-page-title">
+                            @*<h3>Related products - 165000.1</h3>*@
+                            @*<h3>Related products - @Model.Data.ProductList[0].Symbol</h3>*@
+                        </div>
+                    </div>
+                </div>
+                <!-- Nav pills -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#tab">All found (@Model.Data.ProductList.Count)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#tab1"> Show new products only (686)</a>
+                    </li>
+                </ul>
+                <!--product info end-->
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="product-page-title">
+                            @*<h3>Related products - 165000.1</h3>*@
+                            <h3>Related products - @Model.Data.ProductDescription.Symbol</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop_toolbar_wrapper">
+
+                    <div class=" niceselect_option" style="display: none;">
+
+                        <form class="select_option" action="#" style="display: none;">
+                            <select name="orderby" id="short">
+
+                                <option selected="" value="1">Sort by average rating</option>
+                                <option value="2">Sort by popularity</option>
+                                <option value="3">Sort by newness</option>
+                                <option value="4">Sort by price: low to high</option>
+                                <option value="5">Sort by price: high to low</option>
+                                <option value="6">Product Name: Z</option>
+                            </select>
+                        </form><div class="nice-select select_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+
+
+                    </div><div class="nice-select niceselect_option" tabindex="0"><span class="current">Sort by average rating</span><ul class="list"><li data-value="1" class="option selected">Sort by average rating</li><li data-value="2" class="option">Sort by popularity</li><li data-value="3" class="option">Sort by newness</li><li data-value="4" class="option">Sort by price: low to high</li><li data-value="5" class="option">Sort by price: high to low</li><li data-value="6" class="option">Product Name: Z</li></ul></div>
+                    <div class=" niceselect_option" style="display: none;">
+
+                        <form class="select_option" action="#" style="display: none;">
+                            <select name="orderby" id="short">
+
+                                <option selected="" value="1">Ascending</option>
+                                <option value="2"> descending</option>
+
+                            </select>
+                        </form><div class="nice-select select_option" tabindex="0"><span class="current">Ascending</span><ul class="list"><li data-value="1" class="option selected">Ascending</li><li data-value="2" class="option"> descending</li></ul></div>
+
+
+                    </div><div class="nice-select niceselect_option" tabindex="0"><span class="current">Ascending</span><ul class="list"><li data-value="1" class="option selected">Ascending</li><li data-value="2" class="option"> descending</li></ul></div>
+                    <div class="page_amount">
+                        <p>Showing @Model.Data.PageCount-50 of @Model.Data.NumberOfPage results</p>
+                    </div>
+                </div>
+
+                <div class="row no-gutters shop_wrapper grid_list">
+                    @if (Model.Data != null)
+                    {
+                        foreach (var item in Model.Data.RelatedProductList)
+                        {
+                            <div class="col-12 col-sm-6 col-md-12">
+                                <div class="single_product">
+                                    <div class="product_thumb">
+                                        <a href="#"><img src="@item.Thumbnail" alt=""></a>
+                                        @*<div class="quick_button">
+                                                <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                            </div>*@
+
+                                    </div>
+
+                                    <div class="product_content list_content">
+                                        <div class="product_name">
+                                            <h3><a href="#">@item.Symbol</a></h3>
+                                        </div>
+                                        <div class="product_desc">
+                                            <p>@item.Description</p>
+                                        </div>
+                                        <div class="product_file">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                                <li class="list-inline-item"><a href="#">  PDF</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="product_manufacturer">
+                                            <p>Manufacturer: <a href="#">  @item.Producer</a></p>
+                                        </div>
+                                        <div class="product_manuf_part">
+                                            <p>Manufacturer part number: <a href="#"> @item.Symbol</a></p>
+                                        </div>
+
+
+                                        <div class=" btn-section">
+                                            <ul class="list-inline">
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                                <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                            </ul>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                        <div class="product_table">
+                                            <table class="table table-borderless">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Quantity [pcs]  </th>
+                                                        <th>Net price [USD/pcs]:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @*@foreach (var priceList in item.PriceList)
+                                                        {
+                                                            <tr>
+                                                                <td>@priceList.Amount </td>
+                                                                <td>@priceList.PriceValue</td>
+                                                            </tr>
+                                                        }*@
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                        <div class="product_file">
+                                            <p>Multiplicity: : <span>  @item.Multiples</span></p>
+                                            <p>Min. amount: : <span>  @item.MinAmount</span></p>
+                                        </div>
+                                        <div class="product_variant quantity">
+                                            <input min="1" max="100" value="1" type="number">
+                                        </div>
+                                    </div>
+                                    <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                        <div class="price_box">
+                                            <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                        </div>
+                                        <div class="product_del">
+                                            <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                        </div>
+
+                                        <div class="">
+                                            <ul class="list-inline">
+
+                                                <li class="list-inline-item"><a href="#" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="label_product">
+                                            <span class="label_sale label_warning">
+                                                @foreach (var productStatus in item.ProductStatusList)
+                                                {
+                                                    @productStatus;
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    @*<div class="col-12 col-sm-6 col-md-12">
+                            <div class="single_product">
+                                <div class="product_thumb">
+                                    <a href="#"><img src="~/assets/img/inner.jpg" alt=""></a>
+                                    <div class="quick_button">
+                                        <a href="#" data-toggle="modal" data-target="#modal_box" title="quick view"> <i class="zmdi zmdi-eye"></i></a>
+                                    </div>
+
+                                </div>
+
+                                <div class="product_content list_content">
+                                    <div class="product_name">
+                                        <h3><a href="#">10A01-T</a></h3>
+                                    </div>
+                                    <div class="product_desc">
+                                        <p>Diode: rectifying; THT; 50V; 10A; Package: reel,tape; R6; Ifsm: 600A</p>
+                                    </div>
+                                    <div class="product_file">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#"> INFO </a></li>|
+                                            <li class="list-inline-item"><a href="#">  PDF</a></li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="product_manufacturer">
+                                        <p>Manufacturer: <a href="#"> DIODES INCORPORATED</a></p>
+                                    </div>
+                                    <div class="product_manuf_part">
+                                        <p>Manufacturer part number: <a href="#"> 10A01-T</a></p>
+                                    </div>
+
+
+                                    <div class=" btn-section">
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="fa fa-heart-o" aria-hidden="true"></i> Set e-mail notification</a></li>
+                                            <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+                                            <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Add to compare</a></li>
+                                            <li class="list-inline-item"><a href="#" class="btn btn-gray btn-sm"><i class="zmdi zmdi-swap"></i> Group</a></li>
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                                <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+                                    <div class="product_table">
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th>Quantity [pcs]  </th>
+                                                    <th>Net price [USD/pcs]:</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1+ </td>
+                                                    <td>0.75110</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>1+ </td>
+                                                    <td>0.75110</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>500+ </td>
+                                                    <td>0.75110</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="product_content grid_content w-10 w-md-17 w-lg-12 w-sm-20">
+                                    <div class="product_file">
+                                        <p>Multiplicity: : <span> 10</span></p>
+                                        <p>Min. amount: : <span> 10</span></p>
+                                    </div>
+                                    <div class="product_variant quantity">
+                                        <input min="1" max="100" value="1" type="number">
+                                    </div>
+                                </div>
+                                <div class="product_content grid_content w-15 w-md-20 w-sm-22">
+
+
+                                    <div class="price_box">
+                                        <p> in stock [pcs] <span class="current_price">65</span> </p>
+                                    </div>
+                                    <div class="product_del">
+                                        <h6><a href="#">Deliveries to the warehouse</a></h6>
+                                    </div>
+
+                                    <div class="">
+                                        <ul class="list-inline">
+
+                                            <li class="list-inline-item"><a href="#" class="btn btn-danger btn-md order-btn"><i class="zmdi zmdi-shopping-cart-plus"></i> add to cart</a></li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="label_product">
+                                        <span class="label_sale label_warning">
+                                            Product available till the stocks
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+                </div>
+                <div class="shop_toolbar t_bottom">
+                    <div id="page-selection" class="pagination">
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--shop  area end-->
+
+<script>
+    $('#page-selection').bootpag({
+        total:@Model.Data.NumberOfPage,
+        page: @Model.Data.PageCount,
+        maxVisible: 10,
+        leaps: true,
+        firstLastUse: true,
+        first: '←',
+        last: '→',
+        wrapClass: 'pagination',
+        activeClass: 'active',
+        disabledClass: 'disabled',
+        nextClass: 'next',
+        prevClass: 'prev',
+        lastClass: 'last',
+        firstClass: 'first'
+    }).on("page", function (event, num) {
+        @*location.href = "/Shopping/ProductList?id=@Model.Data.CategoryTree.Id&pageCount=" + num;*@
+    });
+</script>

@@ -1,0 +1,719 @@
+﻿@{ 
+    double totalAmount = 0;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Electronice</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/img/favicon.ico">
+
+    <!-- CSS
+    ========================= -->
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/assets/css/plugins.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/metisMenu.css" />
+    <link rel="stylesheet" href="~/assets/css/mm-vertical.css" />
+    <link rel="stylesheet" href="~/assets/css/jquery.multiselect.css" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootpage.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+</head>
+<body>
+    <input type="hidden" id="hdnCartValue" value="@Session["CartCount"]"/>
+    <!--header area start-->
+    <header class="header_area">
+
+        <!--header center area start-->
+        <div class="header_middle">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="logo">
+                            <a href="/Home/Index"><img src="~/assets/img/logo.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 invisible-md">
+                        <div class="d-flex flex-row justify-content-between header-top pb-2">
+
+                            <ul class="d-flex flex-wrap header-menu ">
+                                <li><a href="#">300 000 products in our offer</a></li>
+                                <li><a href="#">5000 parcels sent every day</a></li>
+                                <li><a href="#">200 000 customers from 140 countries </a></li>
+
+                            </ul>
+                            <ul class="d-flex flex-wrap header-contact">
+                                <li><a href="#">Customer Care (+91) 8368444797</a></li>
+                            </ul>
+
+                        </div>
+                        <form action="#">
+                            <div class="header_middle_inner">
+                                <div class="search-container w-100">
+                                    <div class="form">
+                                        <div class="hover_category">
+                                            <select class="select_option" name="select" id="categori">
+                                                <option selected value="1">All</option>
+                                                <option value="2">Accessories</option>
+                                                <option value="3">Accessories</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="search_box">
+                                            <input placeholder="Search product..." type="text" id="txtSearchProduct">
+                                            <button type="button" onclick="SearchProduct()"><i class="zmdi zmdi-search"></i></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="serach-label">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox"> <span> search in: Universal diodes</span>
+                                </label>
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox">   <span> search in customer symbols only</span>
+                                </label>
+
+                            </div>
+                        </form>
+                        <div class=" header-menu pt-2">
+                            <ul class="d-flex flex-wrap">
+                                <li><a href="#">Your account </a></li>
+                                <li><a href="#"> Offers </a></li>
+                                <li><a href="#">Customer symbols </a></li>
+                                <li><a href="#"> Pro-forma Invoices </a></li>
+                                <li><a href="#">Sales history </a></li>
+                                <li><a href="#">Parking </a></li>
+                                <li><a href="#"> Applications </a></li>
+                                <li><a href="#"> Notifications </a></li>
+                                <li><a href="#"> Quick Buy</a></li>
+                            </ul>
+                        </div><!-- End .header-menu -->
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="header-cart">
+                            <div class="d-flex  top_right user_account">
+                                <ul>
+                                    <li class="top_links">
+                                        <a href="#">
+                                            <span class="block">
+                                                <i class="fa fa-user-o" aria-hidden="true"></i>
+                                                <p>Account </p>
+                                            </span>
+
+                                        </a>
+                                        <ul class="dropdown_links">
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a href="#">Checkout </a></li>
+                                                <li><a href="#">Account </a></li>
+                                                <li><a href="#">Shopping Cart</a></li>
+                                                <li><a href="#">Wishlist</a></li>
+                                                <li>@Html.ActionLink("LogOut", "LogOut", "Account")</li>
+                                                @*<li><a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>*@
+                                            }
+                                            else
+                                            {
+                                                @*<li>@Html.ActionLink("Login", "Login", "Account")</li>*@
+                                                <li><a href="#" id="btnloginModal">Login</a></li>
+                                                @*<li>@Html.ActionLink("SignIn", "SignIn", "Account")</li>*@
+                                            }
+                                        </ul>
+                                    </li>
+
+                                    <li class="top_links">
+                                        <a href="#">
+                                            <span class="block">
+                                                <i class="fa fa-file-text-o"></i>
+                                                <p> Quote </p>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="top_links mini_cart_wrapper">
+                                        <a href="/Shopping/CartDetails">
+                                            <span class="block">
+                                                <i class="fa fa-shopping-cart"
+                                                   aria-hidden="true"></i>
+                                                <label>Cart</label>&nbsp;<label id="cartValues"></label>
+                                            </span>
+                                        </a>
+
+                                        @if (Session["_CartValue"] != null)
+                                        {
+                                            var cartItem = ((Session["_CartValue"] as DNP.Models.Shopping.CartDetailsViewModel));
+                                            <!--mini cart-->
+                                            <div class="mini_cart">
+                                                @foreach (var item in cartItem.ProductList)
+                                                {
+                                                    var amount = item.BaseAmount * item.ProductCount;
+                                                    totalAmount += amount;
+                                                    <div class="cart_item" id="cartItem_@item.Symbol">
+                                                        <div class="cart_img">
+                                                            <a href="#"><img src="@item.Thumbnail" alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="/Shopping/ProductDetails/@item.Symbol">@item.Symbol</a>
+
+                                                            <span class="quantity" id="productCount_@item.Symbol">Qty: @item.ProductCount</span>
+                                                            <span class="price_cart">@amount</span>
+
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a onclick="RemoveCartItemList('@item.Symbol')"><i class="ion-android-close"></i></a>
+                                                        </div>
+                                                    </div>
+                                                }
+                                                @*<div class="cart_item">
+                                                        <div class="cart_img">
+                                                            <a href="#"><img src="~/assets/img/product.jpg" alt=""></a>
+                                                        </div>
+                                                        <div class="cart_info">
+                                                            <a href="#">Officiis debitis</a>
+                                                            <span class="quantity">Qty: 1</span>
+                                                            <span class="price_cart">$69.00</span>
+                                                        </div>
+                                                        <div class="cart_remove">
+                                                            <a href="#"><i class="ion-android-close"></i></a>
+                                                        </div>
+                                                    </div>*@
+                                                <div class="mini_cart_table" id="divSubTotal">
+                                                    <div class="cart_total">
+                                                        <span>Subtotal:</span>
+                                                        <span class="price">@totalAmount</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mini_cart_footer" id="divCartFooter">
+                                                    <div class="cart_button">
+                                                        <a href="/Shopping/CartDetails">View cart</a>
+                                                        <a onclick="IsLogin()">Checkout</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--mini cart end-->
+                                        }
+                                    </li>
+
+
+
+
+                                </ul>
+
+                            </div>
+                            <div class="d-flex top_right mt-2 user_currency">
+                                <ul>
+
+
+                                    <li class="currency">
+                                        <a href="#">
+                                            <i class="fa fa-inr"></i> Indian Rs <i class="zmdi zmdi-caret-down"></i>
+                                        </a>
+                                        <ul class="dropdown_currency">
+                                            <li><a href="#">EUR – Euro</a></li>
+                                            <li><a href="#">GBP – British Pound</a></li>
+                                        </ul>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header center area end-->
+        <!--header middel start-->
+        <div class="header_bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="main_menu header_position">
+                            <nav>
+                                <ul>
+                                    <li><a href="#">HOME</a></li>
+                                    <li><a href="#">HOW TO BUY </a></li>
+                                    <li><a href="#">WHO WE ARE</a></li>
+                                    <li><a href="#">CAREER</a></li>
+                                    <li><a href="#">HELP</a></li>
+                                    <li><a href="#">CONTACT</a></li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header middel end-->
+
+    </header>
+    <!--header area end-->
+    <!--Offcanvas menu area start-->
+
+    <div class="off_canvars_overlay">
+
+    </div>
+    <div class="Offcanvas_menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="canvas_open">
+                        <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                    </div>
+                    <div class="Offcanvas_menu_wrapper">
+                        <div class="canvas_close">
+                            <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                        </div>
+                        <div class="search-container">
+                            <form action="#">
+                                <div class="hover_category">
+                                    <select class="select_option" name="select" id="categori2">
+                                        <option selected value="1">All</option>
+                                        <option value="2">Accessories</option>
+                                        <option value="3">Accessories</option>
+                                    </select>
+                                </div>
+                                <div class="search_box">
+                                    <input placeholder="Search product..." type="text">
+                                    <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="Offcanvas_tab">
+                            <ul class="nav nav-pills nav-justified" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="pill" href="#home">Primary Menu</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="pill" href="#menu1">Product Menu</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content">
+                                <div id="home" class="container tab-pane active">
+                                    <br>
+                                    <div id="menu" class="text-left ">
+                                        <ul class="offcanvas_main_menu">
+                                            <li class="menu-item-has-children active">
+                                                <a href="#">Home</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="">Home 1</a></li>
+                                                    <li><a href="">Home 2</a></li>
+                                                    <li><a href="">Home 3</a></li>
+                                                    <li><a href="">Home 4</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="#">Shop</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="#">blog</a>
+                                            </li>
+
+                                            <li class="menu-item-has-children">
+                                                <a href="">about Us</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href=""> Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div id="menu1" class="container tab-pane fade">
+                                    <br>
+                                    <div id="menu2" class="text-left ">
+                                        <ul class="offcanvas_main_menu">
+                                            <li class="menu-item-has-children active">
+                                                <a href="#">Semiconductors</a>
+                                                <ul class="sub-menu">
+                                                    <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                    <li><a href="#">Discrete</a></li>
+                                                    <li><a href="#">Embedded Computers</a></li>
+                                                    <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                    <li><a href="#"> Isolators</a></li>
+                                                    <li><a href="#">LED/Optoelectronics</a></li>
+                                                    <li><a href="#">RF, Wireless</a></li>
+                                                    <li><a href="#">RF, Wireless</a></li>
+                                                    <li><a href="#">Sensors, Transducers</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="#">Passives</a>
+                                                <ul class="sub-menu">
+                                                    <li class="menu-item-has-children">
+                                                        <a href="#">Capacitors</a>
+                                                        <ul class="sub-menu">
+                                                            <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                            <li class="menu-item-has-children">
+                                                                <a href="#">Discrete</a>
+                                                                <ul class="sub-menu">
+                                                                    <li><a href="#">Embedded Computers</a></li>
+                                                                    <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                                    <li><a href="#"> Isolators</a></li>
+                                                                    <li><a href="#">LED/Optoelectronics</a></li>
+                                                                    <li><a href="#">RF, Wireless</a></li>
+                                                                    <li><a href="#">RF, Wireless</a></li>
+                                                                    <li><a href="#">Sensors, Transducers</a></li>
+                                                                </ul>
+
+                                                            </li>
+                                                            <li><a href="#">Embedded Computers</a></li>
+                                                            <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                            <li><a href="#"> Isolators</a></li>
+                                                            <li><a href="#">LED/Optoelectronics</a></li>
+                                                            <li><a href="#">RF, Wireless</a></li>
+                                                            <li><a href="#">RF, Wireless</a></li>
+                                                            <li><a href="#">Sensors, Transducers</a></li>
+                                                        </ul>
+                                                    </li>
+                                                    <li><a href="#">Crystals, Oscillators</a></li>
+                                                    <li><a href="#">Filters</a></li>
+                                                    <li><a href="#"> Inductors, Coils, Chokes</a></li>
+                                                    <li><a href="#">Potentiometers, Variable Resistors</a></li>
+                                                    <li><a href="#">Resistors</a></li>
+                                                    <li><a href="#">Thermal Management</a></li>
+                                                </ul>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href="#">Electromechanical</a>
+                                            </li>
+
+                                            <li class="menu-item-has-children">
+                                                <a href="">Power, Circuit Protection</a>
+                                            </li>
+                                            <li class="menu-item-has-children">
+                                                <a href=""> Contact Us</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="Offcanvas_footer">
+                            <span><a href="#"><i class="fa fa-envelope-o"></i> info@Electronic.com</a></span>
+                            <ul>
+                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Offcanvas menu area end-->
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!--footer area start-->
+        <!--footer area start-->
+        <footer class="footer_widgets">
+            <div class="footer_top_wrapper">
+                <div class="container">
+                    <div class="footer_top">
+                        <div class="row w-75 mx-auto">
+                            <div class="col-lg-3 col-sm-3 col-6">
+                                <div class="widgets_container widget_menu">
+                                    <h3>ABOUT US</h3>
+                                    <div class="footer_menu">
+                                        <ul>
+                                            <li><a href="#">About products</a></li>
+                                            <li><a href="#"> Product of the week</a></li>
+                                            <li><a href="#">International Shipping</a></li>
+                                            <li><a href="#"> Affiliates</a></li>
+                                            <li><a href="#"> Contact</a></li>
+                                            <li><a href="#"> Travel</a></li>
+                                            <li><a href="#">ecommerce</a></li>
+                                            <li><a href="#"> Creative</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-6">
+                                <div class="row">
+                                    <div class="widgets_container widget_menu">
+                                        <h3>HOW TO BUY</h3>
+                                        <div class="footer_menu">
+                                            <ul>
+                                                <li><a href="#">Means and cost of transport</a></li>
+                                                <li><a href="#"> Orders</a></li>
+                                                <li><a href="#">Shipping</a></li>
+                                                <li><a href="#"> Payments</a></li>
+                                                <li><a href="#"> Contact</a></li>
+                                                <li><a href="#"> Travel</a></li>
+                                                <li><a href="#"> Creative</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-6">
+                                <div class="row">
+                                    <div class="widgets_container widget_menu">
+                                        <h3>AGENCIES</h3>
+                                        <div class="footer_menu">
+                                            <ul>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/AboutCompany:7.html"
+                                                       title="">TME Czech Republic, s.r.o.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/tme-hungary-kft_.html"
+                                                       title="">TME Hungary Kft.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/AboutCompany:9.html"
+                                                       title="">Transfer Multisort Elektronik S.R.L.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/tme-slovakia-s_r_o_.html"
+                                                       title="">TME Slovakia, s.r.o.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/tme-germany-gmbh.html"
+                                                       title="">TME Germany GmbH</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/transfer-multisort-elektronik-s_l_u_.html"
+                                                       title="">Transfer Multisort Elektronik S.L.U.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/transfer-multisort-elektronik-b.v._.html"
+                                                       title="">Transfer Multisort Elektronik B.V.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/tme_italia_s.r.l._.html"
+                                                       title="">TME ITALIA S.r.l.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/transfer-multisort-elektronik-ltd.html"
+                                                       title="">Transfer Multisort Elektronik Ltd.</a>
+                                                </li>
+                                                <li>
+                                                    <a href="https://www.tme.com/in/en/pages/about-company/20266/Shenzhen-TME-Electronic-Trading-Company-Ltd"
+                                                       title="">Shenzhen TME Electronic Trading Company Ltd.</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-3 col-6">
+                                <div class="row">
+                                    <div class="widgets_container widget_menu">
+                                        <h3>YOUR ACCOUNT</h3>
+                                        <div class="footer_menu">
+                                            <ul>
+                                                <li><a href="#">Shipping & Returns</a></li>
+                                                <li><a href="#"> Secure Shopping</a></li>
+                                                <li><a href="#">International Shipping</a></li>
+                                                <li><a href="#"> Affiliates</a></li>
+                                                <li><a href="#"> Contact</a></li>
+                                                <li><a href="#"> Travel</a></li>
+                                                <li><a href="#">ecommerce</a></li>
+                                                <li><a href="#"> Creative</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+        <!--footer area end-->
+    </div>
+
+
+
+    <!-- JS
+    ============================================ -->
+    <!-- Plugins JS -->
+    <script src="~/assets/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+    <script src="~/assets/js/metisMenu.js"></script>
+    <script src="~/assets/js/mm-vertical.js"></script>
+    <script src="~/assets/js/jquery.multiselect.js"></script>
+
+    <script>
+        $(function () {
+            $('#filter-one, #filter-two').multiselect({
+                columns: 1,
+                placeholder: 'Select States',
+                search: true,
+                searchOptions: {
+                    'default': 'Search States'
+                },
+                selectAll: true
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>
+
+<!-- Login Sesction -->
+@*<div id='loader' style="display:none">loading...</div>*@
+<div class="modal" id="loginModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Login</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="account_form">
+
+                    <form action="#" id="frmLogin">
+                        <p>
+                            <label>Username or email <span>*</span></label>
+                            <input type="text" id="txtUserName" class="form-control" placeholder="Username or email">
+                            <span id="error_txtUserName" class="text-danger"></span>
+                        </p>
+                        <p>
+                            <label>Passwords <span>*</span></label>
+                            <input type="password" id="txtPassword" class="form-control" placeholder="Password">
+                            <span id="error_txtPassword" class="text-danger"></span>
+                        </p>
+                        <p>
+                            <span id="invalidUser" class="text-danger"></span>
+                        </p>
+                        @*<div id="loader" style="display:none;">
+                            <img src="~/assets/img/loader.gif" alt="Loader" />
+                            </div>*@
+                            <div class="login_submit">
+                                @*<a href="#" id="btnForgetPassword" data-toggle="modal" data-target="#forgetPasswordModal">Forget your password</a>*@
+                                <a href="#" role="button" id="btnForgetPassword">Forget your password</a>
+                                <button type="button" id="btnLogin">login</button>
+
+                            </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                @*<p class="w-100 px-3"> No account yet? <a href="#" style="color: #cd2027;float: right;">Register</a></p>*@
+                @*<p class="w-100 px-3"> No account yet? <a href="#" style="color: #cd2027;float: right;" @Html.ActionLink("Register", "SignIn", "Account")/></p>*@
+                @*<p class="w-100 px-3"> No account yet? <a href="#" id="btnRegister" role="button" onclick="location.href='@Url.Action("SignIn", "Account")';return false;" style="color: #cd2027;float: right;" />Register</p>*@
+                <p class="w-100 px-3"> No account yet? <a href="#" id="btnRegister" style="color: #cd2027;float: right;" />Register</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Login Sesction End -->
+<!-- Forgot Password Secion -->
+<div class="modal" id="forgetPasswordModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Email verification</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="account_form">
+
+                    <form action="#" id="frmForgetPassword">
+                        <p>
+                            <label>Email <span>*</span></label>
+                            <input type="text" id="txtEmail" class="form-control" placeholder="Email">
+                            <span id="error_txtEmail" class="text-danger" ></span>
+                        </p>
+
+                        <div class="login_submit">
+                            <button type="button" class="btn btn-danger btn-md btn-block order-btn my-3" id="btnSendEmail">Send</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Forgot Password Secion End -->
+<!-- New Password Secion -->
+<div class="modal" id="newPasswordModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Create New Password</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="account_form">
+
+                    <form action="#" id="frmNewPassword">
+                        <p>
+                            <label>New Passwords <span>*</span></label>
+                            <input type="password" id="txtNewPassword">
+                            <span id="error_txtNewPassword" class="text-danger"></span>
+                        </p>
+                        <p>
+                            <label>Confirm Passwords <span>*</span></label>
+                            <input type="password" id="txtConfirmPassword">
+                            <span id="error_txtConfirmPassword" class="text-danger"></span>
+                        </p>
+                        <p>
+                            <label>OTP <span>*</span></label>
+                            <input type="text" id="txtOTP">
+                            <span id="error_txtOTP" class="text-danger"></span>
+                        </p>
+
+                        <div class="login_submit">
+                            <button type="button" id="btnCreatePassword">Create</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- New Password Secion End -->
+
+<script src="~/Scripts/CustomJS/MainLayout.js"></script>

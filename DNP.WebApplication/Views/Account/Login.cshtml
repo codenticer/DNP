@@ -1,0 +1,201 @@
+﻿@model DNP.Models.Users.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@*<h2>Login</h2>*@
+
+
+@*@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()*@
+    
+@*<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder="Enter a valid email address" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", type = "Password", placeholder="Enter password" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-6">
+            @Html.CheckBoxFor(model => model.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+        
+    </div>
+    @*<div>
+        <div class="row mb-3 px-3"> <button type="submit" class="btn btn-blue text-center">Login</button> </div>
+        <div class="row mb-4 px-3"> <small class="font-weight-bold">Don't have an account? <a class="text-danger ">Register</a></small> </div>
+    </div>*@
+
+    @*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Login" class="btn btn-success" />
+        </div>
+    </div>*@
+
+@*</div>*@
+}
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @*<input type="button" value="Forget Password" id="btnForgetPassword" class="btn btn-success" />*@
+        @*<a id="btnForgetPassword">Forgot Password?</a>*@
+    </div>
+</div>
+<div class="modal fade" id="ForgotPopUp" role="dialog">
+    <div class="modal-dialog err-pop" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="DivClose" type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Forget Password</h4>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <label>Email</label>
+                <input type="text" id="txtEmail" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="sendEmail">Send</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="RecoverPopUp" role="dialog">
+    <div class="modal-dialog err-pop" style="">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button id="DivClose" type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create New Password</h4>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+                <label>New Password</label>
+                <input type="password" id="txtNewPassword" typeof="" />
+                <br />
+                <label>Confirm Password</label>
+                <input type="password" id="txtConfirmPassword" />
+                <br />
+                <label>OTP</label>
+                <input type="text" id="txtOTP" />
+                <br />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="btnCreatePassword">Create</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    @*<input type="button" value="Sign In" onclick="location.href='@Url.Action("SignIn", "Account")';return false;" class="btn btn-success" />*@
+   
+        <a id="btnForgetPassword">Forgot Password?</a>
+   <br />
+    <small class="font-weight-bold">Don't have an account? <a onclick="location.href='@Url.Action("SignIn", "Account")';return false;" class="text-danger ">Register</a></small>
+    @*@Html.ActionLink("Sign In", "SignIn")*@
+</div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script>
+        var userEmail;
+        $("#btnForgetPassword").click(function () {           
+            $('#ForgotPopUp').modal('show');
+           
+        })
+        $("#sendEmail").click(function () {            
+            var forgotpassword = {
+                Email:$("#txtEmail").val()
+            }            
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("SendEmail")',
+                data: forgotpassword,  
+                dataType: "json", 
+                success: function (data) {
+                    debugger;
+                    userEmail = data;
+                    //alert("Mail sent!.");
+                    $('#ForgotPopUp').modal('hide');
+                    $('#RecoverPopUp').modal('show');                                         
+                },  
+                error: function () {  
+                    alert("Error while inserting data");  
+                }  
+            });  
+        })
+        $("#btnCreatePassword").click(function () {
+            var isTrue = validatePassword(); 
+            var createPassword = {
+                Email: userEmail,
+                Password: $("#txtNewPassword").val(),
+                OTP: $("#txtOTP").val()
+            }
+            debugger;
+            if (isTrue) {
+                
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("CreatePassword")',
+                    data: createPassword,
+                    dataType: "json",
+                    success: function () {
+                        alert("Success!.");
+                        //$('#ForgotPopUp').modal('hide');
+                        $('#RecoverPopUp').modal('hide');
+                    },
+                    error: function () {
+                        alert("Error while changing password");
+                    }
+                });
+            }
+            else {
+                return false;
+            }
+        })
+        function validatePassword() {           
+            var newPassword=$("#txtNewPassword").val();
+            var confirmPassword = $("#txtConfirmPassword").val();
+            var otp = $("#txtOTP").val();
+            if (newPassword == "") {
+                alert('Enter Password');
+                return false;
+            }
+            else if (confirmPassword == "") {
+                alert('Enter Confirm Password');
+                return false;
+            }
+            else if (newPassword != confirmPassword) {
+                alert('Enter Confirm Password Same as Password');
+                return false;
+            }
+            else if (otp == "")
+            {
+                alert('Enter otp');
+                return false;
+            }
+            else {
+                return true;
+            }
+            
+        }
+    </script>

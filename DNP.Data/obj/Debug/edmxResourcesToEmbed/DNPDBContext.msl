@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DNPDBModelStoreContainer" CdmEntityContainer="DNPDBEntities">
+    <FunctionImportMapping FunctionImportName="spUserLogin" FunctionName="DNPDBModel.Store.spUserLogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spUserLogin_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUserRegistration" FunctionName="DNPDBModel.Store.spUserRegistration" />
+    <FunctionImportMapping FunctionImportName="spUpdateUserOTP" FunctionName="DNPDBModel.Store.spUpdateUserOTP" />
+    <FunctionImportMapping FunctionImportName="spGetUserByEmail" FunctionName="DNPDBModel.Store.spGetUserByEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetUserByEmail_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="OTPDateTIme" ColumnName="OTPDateTIme" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdateNewPassword" FunctionName="DNPDBModel.Store.spUpdateNewPassword" />
+    <FunctionImportMapping FunctionImportName="spGetUserByUsernameAndEmail" FunctionName="DNPDBModel.Store.spGetUserByUsernameAndEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetUserByUsernameAndEmail_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCountry" FunctionName="DNPDBModel.Store.spGetCountry">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetCountry_Result">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetStateByCountryId" FunctionName="DNPDBModel.Store.spGetStateByCountryId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetStateByCountryId_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetCityByStateId" FunctionName="DNPDBModel.Store.spGetCityByStateId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetCityByStateId_Result">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCreateTransactionDetails" FunctionName="DNPDBModel.Store.spCreateTransactionDetails" />
+    <FunctionImportMapping FunctionImportName="spCreateUserOrderDetails" FunctionName="DNPDBModel.Store.spCreateUserOrderDetails" />
+    <FunctionImportMapping FunctionImportName="spGetUserDetailsByEmailorUsername" FunctionName="DNPDBModel.Store.spGetUserDetailsByEmailorUsername">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetUserDetailsByEmailorUsername_Result">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+          <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+          <ScalarProperty Name="ContactTelephone" ColumnName="ContactTelephone" />
+          <ScalarProperty Name="ContactMobile" ColumnName="ContactMobile" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetProductPriceBySymbol" FunctionName="DNPDBModel.Store.spGetProductPriceBySymbol">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DNPDBModel.spGetProductPriceBySymbol_Result">
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+          <ScalarProperty Name="OriginalSymbol" ColumnName="OriginalSymbol" />
+          <ScalarProperty Name="TMEPrice" ColumnName="TMEPrice" />
+          <ScalarProperty Name="PartNumber" ColumnName="PartNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

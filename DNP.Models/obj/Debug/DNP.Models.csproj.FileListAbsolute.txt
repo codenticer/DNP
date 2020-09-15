@@ -1,0 +1,15 @@
+C:\HomeProject\DNP\DNP.Models\bin\Debug\DNP.Models.dll
+C:\HomeProject\DNP\DNP.Models\bin\Debug\DNP.Models.pdb
+C:\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.csproj.CoreCompileInputs.cache
+C:\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.dll
+C:\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.pdb
+C:\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.csprojAssemblyReference.cache
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\bin\Debug\DNP.Models.dll
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\bin\Debug\DNP.Models.pdb
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\bin\Debug\Newtonsoft.Json.dll
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.csproj.CoreCompileInputs.cache
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.csproj.CopyComplete
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.dll
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.pdb
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\bin\Debug\Newtonsoft.Json.xml
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Models\obj\Debug\DNP.Models.csprojAssemblyReference.cache

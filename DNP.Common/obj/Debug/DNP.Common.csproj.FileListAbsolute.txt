@@ -1,0 +1,10 @@
+C:\HomeProject\DNP\DNP.Common\bin\Debug\DNP.Common.dll
+C:\HomeProject\DNP\DNP.Common\bin\Debug\DNP.Common.pdb
+C:\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.csproj.CoreCompileInputs.cache
+C:\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.dll
+C:\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.pdb
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Common\bin\Debug\DNP.Common.dll
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Common\bin\Debug\DNP.Common.pdb
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.csproj.CoreCompileInputs.cache
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.dll
+F:\WorkfromHomeProject\HomeProject\DNP\DNP.Common\obj\Debug\DNP.Common.pdb

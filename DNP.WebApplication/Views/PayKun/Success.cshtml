@@ -1,0 +1,18 @@
+﻿@model DNP.Models.Paykun.TransactionStatusRes
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="orderplace-box">
+    <h5 class="orderplace">Thank You! Your Order Successfully Place</h5>
+    <p class="lead"><strong>An e-mail confirmation has been send to you</strong></p>
+    <hr>
+    <p class="orderno">
+        Order Number: <span>@Model.data.transaction.order.order_id</span>
+    </p>
+    <p class="deliverydate">1 item has been Shipping to <a>Gaurav</a> by Electronic.com. Eastimate delivery <span> @DateTime.Now.ToShortDateString()</span></p>
+    <p class="lead">
+        <a class="btn btn-danger btn-md order-btn" href="/Home/Index" role="button">Continue to homepage</a>
+    </p>
+</div>

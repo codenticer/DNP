@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DNPDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DNPDBEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="spUserLogin" ReturnType="Collection(DNPDBModel.spUserLogin_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUserRegistration">
+      <Parameter Name="XMLData" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateUserOTP">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="OTP" Mode="In" Type="String" />
+      <Parameter Name="OTPDateTime" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserByEmail" ReturnType="Collection(DNPDBModel.spGetUserByEmail_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateNewPassword">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserByUsernameAndEmail" ReturnType="Collection(DNPDBModel.spGetUserByUsernameAndEmail_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Username" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetCountry" ReturnType="Collection(DNPDBModel.spGetCountry_Result)" />
+    <FunctionImport Name="spGetStateByCountryId" ReturnType="Collection(DNPDBModel.spGetStateByCountryId_Result)">
+      <Parameter Name="CountryId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetCityByStateId" ReturnType="Collection(DNPDBModel.spGetCityByStateId_Result)">
+      <Parameter Name="StateId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spCreateTransactionDetails">
+      <Parameter Name="TransactionId" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Int64" />
+      <Parameter Name="OrderId" Mode="In" Type="String" />
+      <Parameter Name="CustomerName" Mode="In" Type="String" />
+      <Parameter Name="CustomerEmail" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="PaymentStatus" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCreateUserOrderDetails">
+      <Parameter Name="OrderId" Mode="In" Type="String" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductName" Mode="In" Type="String" />
+      <Parameter Name="Amount" Mode="In" Type="Int32" />
+      <Parameter Name="Photo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserDetailsByEmailorUsername" ReturnType="Collection(DNPDBModel.spGetUserDetailsByEmailorUsername_Result)">
+      <Parameter Name="Email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spGetProductPriceBySymbol" ReturnType="Collection(DNPDBModel.spGetProductPriceBySymbol_Result)">
+      <Parameter Name="Symbol" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="spUserLogin_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="CountryId" Nullable="true" />
+    <Property Type="Int32" Name="StateId" Nullable="true" />
+    <Property Type="Int32" Name="CityId" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetUserByEmail_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="OTP" Nullable="true" MaxLength="20" />
+    <Property Type="DateTime" Name="OTPDateTIme" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="spGetUserByUsernameAndEmail_Result">
+    <Property Type="Int32" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetCountry_Result">
+    <Property Type="Int32" Name="CountryId" Nullable="false" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetStateByCountryId_Result">
+    <Property Type="Int32" Name="StateId" Nullable="false" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetCityByStateId_Result">
+    <Property Type="Int32" Name="CityId" Nullable="false" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetUserDetailsByEmailorUsername2_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ContactFirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactLastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactTelephone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ContactMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetUserDetailsByEmailorUsername_Result">
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="String" Name="CompanyName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Username" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ZipCode" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="ContactFirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactLastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ContactTelephone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ContactMobile" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="spGetProductPriceBySymbol_Result">
+    <Property Type="String" Name="Symbol" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="Qty" Nullable="true" />
+    <Property Type="Decimal" Name="NewPrice" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="OriginalSymbol" Nullable="true" MaxLength="200" />
+    <Property Type="Decimal" Name="TMEPrice" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="PartNumber" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

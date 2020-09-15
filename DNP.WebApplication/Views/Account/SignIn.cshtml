@@ -1,0 +1,1454 @@
+﻿@model DNP.Models.Users.UsersViewModel
+
+@{
+    ViewBag.Title = "SignIn";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<!--Offcanvas menu area end-->
+
+
+
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>Camera &amp; Video </li>
+                        <li>shop</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h4 class="my-3">NEW CUSTOMER REGISTRATION</h4>
+
+    <ul class="nav nav-tabs register-nav  mt-4 mb-5">
+        <li class="nav-item col-md-4 mr-0 text-center">
+            <a class="nav-link active" data-toggle="tab" href="#register"> <img src="~/assets/img/register_company.svg" /> <span class="register-nav-text">Form for companies </span> </a>
+        </li>
+        <li class="nav-item col-md-4 mr-0 text-center">
+            <a class="nav-link" data-toggle="tab" href="#register1"> <img src="~/assets/img/register_company.svg" /> Form for sole trader (sole proprietorship)</a>
+        </li>
+        <li class="nav-item col-md-4 mr-0 text-center">
+            <a class="nav-link" data-toggle="tab" href="#register2">
+                <img src="~/assets/img/register_company.svg" />
+                Form for private customers
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content register-tab-content">
+        <div class="tab-pane container active" id="register">
+
+            @*@using (Html.BeginForm("SignIn", "Account", FormMethod.Post))
+            {*@
+            <form id="Registration1">
+                <h4 class="registration-heading">Registration</h4>
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Full company name *</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="CompanyName" class="form-control" data-validation="required">
+                        <span id="error_CompanyName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        @*<select id="Country" class="form-control">
+                    <option>Afghanistan</option>
+                    <option>Bahamas</option>
+                    <option>Cambodia</option>
+                    <option>Denmark</option>
+                    <option>Ecuador</option>
+                    <option>Fiji</option>
+                    <option>Gabon</option>
+                    <option>Haiti</option>
+                </select>*@
+                        @Html.DropDownList("CountryId", new SelectList(ViewBag.Country, "Value", "Text"), "Select Country", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="state" class="col-sm-3 control-label">State</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownList("StateId", new SelectList(string.Empty, "Value", "Text"), "Select State", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="city" class="col-sm-3 control-label">City</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownList("CityId", new SelectList(string.Empty, "Value", "Text"), "Select City", new { @class = "form-control" })
+                    </div>
+                </div>
+                @*<div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="City" class="form-control">
+                    </div>
+                </div>*@
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="ZipCode " class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Address" class="form-control">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="PhoneNumber" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="FAX" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="Email" placeholder="Email" class="form-control" data-validation="required">
+                        <span id="error_Email" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Country VAT registration number (not VAT EU)</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="CountryVAT" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="Language" class="form-control">
+                            <option value="BG">Bulgarian</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Business" class="col-sm-3 control-label">Business activity  </label>
+                    <div class="col-sm-9">
+                        <select id="BusinessActivity" class="form-control">
+                            <option value="05">Budg ent (w/t school</option>
+                            <option value="28">Car repair shops</option>
+                            <option value="08">Contr.manuf. -other</option>
+                            <option value="07">Contr.manuf.electron</option>
+                            <option value="23">Education</option>
+                            <option value="02">Electr compon trade</option>
+                            <option value="04">Financial institutio</option>
+                            <option value="06">Individual</option>
+                            <option value="26">Installation service</option>
+                            <option value="22">IT sector</option>
+                            <option value="27">Maintenance</option>
+                            <option value="12">Manuf. machin. ind.</option>
+                            <option value="14">Manuf.automotive</option>
+                            <option value="19">Manuf.cables&amp;gro</option>
+                            <option value="11">Manuf.chem.industry</option>
+                            <option value="17">Manuf.cntrl.automat.</option>
+                            <option value="16">Manuf.electron.equip</option>
+                            <option value="10">Manuf.electrotech</option>
+                            <option value="15">Manuf.food.industry</option>
+                            <option value="09">Manuf.household appl</option>
+                            <option value="13">Manuf.metal.industry</option>
+                            <option value="20">Manuf.other</option>
+                            <option value="18">Manuf.power.equ.UPS</option>
+                            <option value="99">Others</option>
+                            <option value="01">Power engineering</option>
+                            <option value="21">Product design. R&amp;am</option>
+                            <option value="24">Telecommunication</option>
+                            <option value="25">Transport</option>
+                            <option value="03">Wholesale electric</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Main page</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="MainPage" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Currency </label>
+                    <div class="col-sm-9">
+                        <select id="Currency " class="form-control">
+                            <option>USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Delivery method  </label>
+                    <div class="col-sm-9">
+                        <select id="DeliveryMethod " class="form-control">
+                            <option value="01">standard (UPS Saver/DHL Express Air) - 24.00 USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Contact person</h4>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">First name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="ContactFirstName" class="form-control" data-validation="required">
+                        <span id="error_ContactFirstName" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Last name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="ContactLastName" class="form-control" data-validation="required">
+                        <span id="error_ContactLastName" class="text-danger"></span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="Department" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-9">
+                        <select id="ContactDepartment" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Position" class="col-sm-3 control-label">Position</label>
+                    <div class="col-sm-9">
+                        <select id="ContactPosition" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0003">Automation Dep.</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="ContactTelephone" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="ContactFax" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Mobile phone</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="ContactMobile" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Instant Messaging </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="ContactInstantMessaging" class="form-control" name="email">
+                    </div>
+                </div>
+
+
+
+                <h4 class="registration-heading">DELIVERY ADDRESS (if different than above).Please do not use the PO box address.</h4>
+
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Company name / First and last name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="DeliveryCompanyName" class="form-control" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        @*<select id="DeliveryCountry" class="form-control">
+                    <option>Afghanistan</option>
+                    <option>Bahamas</option>
+                    <option>Cambodia</option>
+                    <option>Denmark</option>
+                    <option>Ecuador</option>
+                    <option>Fiji</option>
+                    <option>Gabon</option>
+                    <option>Haiti</option>
+                </select>*@
+                        @Html.DropDownList("Value", new SelectList(ViewBag.Country, "Value", "Text"), "Select Country", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="DeliveryCity" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="DeliveryZipCode " class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="DeliveryAddress" class="form-control">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="DeliveryTelephone" class="form-control">
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="DeliveryFax" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="DeliveryLanguage" class="form-control">
+                            <option value="BG">-select-</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Data to log in</h4>
+
+                <div class="form-group form-row">
+                    <label for="Login" class="col-sm-3 control-label">Login*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Username" class="form-control" name="Login" data-validation="required">
+                        <span id="error_Username" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="Password" placeholder="Password" class="form-control" data-validation="required">
+                        <span id="error_Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="ConfirmPassword" placeholder="Password" class="form-control" data-validation="required">
+                        <span id="error_ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Electronic Newsletter</h4>
+                <h4>Electronic Newsletter consent</h4>
+                <p>I have read and understood the TME Newsletter Policy and I hereby give my consent to the sending of TME service's digital information newsletter to my email address.</p>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio" value="agree" checked data-validation="required">I agree
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio" value="don't agree">I do not agree
+                    </label>
+                </div>
+                <h4 class="registration-heading mt-4">Terms</h4>
+                <button type="button" id="btnSubmit" class="btn btn-danger btn-sm">Create</button>
+            </form> <!-- /form -->
+            @*}*@
+        </div>
+
+        <div class="tab-pane container fade" id="register1">
+
+            <form id="Registration2">
+                <h4 class="registration-heading">Registration</h4>
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Full company name *</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option>Afghanistan</option>
+                            <option>Bahamas</option>
+                            <option>Cambodia</option>
+                            <option>Denmark</option>
+                            <option>Ecuador</option>
+                            <option>Fiji</option>
+                            <option>Gabon</option>
+                            <option>Haiti</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="City" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Postcode " class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Address" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" class="form-control" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Country VAT registration number (not VAT EU)</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="VAT" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option value="BG">Bulgarian</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Business" class="col-sm-3 control-label">Business activity  </label>
+                    <div class="col-sm-9">
+                        <select id="Business" class="form-control">
+                            <option value="05">Budg ent (w/t school</option>
+                            <option value="28">Car repair shops</option>
+                            <option value="08">Contr.manuf. -other</option>
+                            <option value="07">Contr.manuf.electron</option>
+                            <option value="23">Education</option>
+                            <option value="02">Electr compon trade</option>
+                            <option value="04">Financial institutio</option>
+                            <option value="06">Individual</option>
+                            <option value="26">Installation service</option>
+                            <option value="22">IT sector</option>
+                            <option value="27">Maintenance</option>
+                            <option value="12">Manuf. machin. ind.</option>
+                            <option value="14">Manuf.automotive</option>
+                            <option value="19">Manuf.cables&amp;gro</option>
+                            <option value="11">Manuf.chem.industry</option>
+                            <option value="17">Manuf.cntrl.automat.</option>
+                            <option value="16">Manuf.electron.equip</option>
+                            <option value="10">Manuf.electrotech</option>
+                            <option value="15">Manuf.food.industry</option>
+                            <option value="09">Manuf.household appl</option>
+                            <option value="13">Manuf.metal.industry</option>
+                            <option value="20">Manuf.other</option>
+                            <option value="18">Manuf.power.equ.UPS</option>
+                            <option value="99">Others</option>
+                            <option value="01">Power engineering</option>
+                            <option value="21">Product design. R&amp;am</option>
+                            <option value="24">Telecommunication</option>
+                            <option value="25">Transport</option>
+                            <option value="03">Wholesale electric</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Main page</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Main page" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Currency </label>
+                    <div class="col-sm-9">
+                        <select id="Currency " class="form-control">
+                            <option>USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Delivery method  </label>
+                    <div class="col-sm-9">
+                        <select id="Currency " class="form-control">
+                            <option value="01">standard (UPS Saver/DHL Express Air) - 24.00 USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Contact person</h4>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">First name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Last name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="LastName" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="Department" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-9">
+                        <select id="Department" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Position" class="col-sm-3 control-label">Position</label>
+                    <div class="col-sm-9">
+                        <select id="Position" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0003">Automation Dep.</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Mobile phone</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Mobilephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Instant Messaging </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="InstantMessaging" class="form-control" name="email">
+                    </div>
+                </div>
+
+
+
+                <h4 class="registration-heading">DELIVERY ADDRESS (if different than above).Please do not use the PO box address.</h4>
+
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Company name / First and last name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Companyname" class="form-control" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option>Afghanistan</option>
+                            <option>Bahamas</option>
+                            <option>Cambodia</option>
+                            <option>Denmark</option>
+                            <option>Ecuador</option>
+                            <option>Fiji</option>
+                            <option>Gabon</option>
+                            <option>Haiti</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="City" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Postcode " class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Address" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option value="BG">-select-</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Data to log in</h4>
+
+                <div class="form-group form-row">
+                    <label for="Login" class="col-sm-3 control-label">Login</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Login" class="form-control" name="Login">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Electronic Newsletter</h4>
+                <h4>Electronic Newsletter consent</h4>
+                <p>I have read and understood the TME Newsletter Policy and I hereby give my consent to the sending of TME service's digital information newsletter to my email address.</p>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio" checked>I agree
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio">I do not agree
+                    </label>
+                </div>
+                <h4 class="registration-heading mt-4">Terms</h4>
+                <button type="submit" class="btn btn-danger btn-sm">Send</button>
+            </form> <!-- /form -->
+
+        </div>
+        <div class="tab-pane container fade" id="register2">
+
+            <form>
+                <h4 class="registration-heading">Registration</h4>
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Full company name *</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" class="form-control" autofocus>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option>Afghanistan</option>
+                            <option>Bahamas</option>
+                            <option>Cambodia</option>
+                            <option>Denmark</option>
+                            <option>Ecuador</option>
+                            <option>Fiji</option>
+                            <option>Gabon</option>
+                            <option>Haiti</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="City" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Postcode " class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Address" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Email* </label>
+                    <div class="col-sm-9">
+                        <input type="email" id="email" placeholder="Email" class="form-control" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Country VAT registration number (not VAT EU)</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="VAT" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option value="BG">Bulgarian</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Business" class="col-sm-3 control-label">Business activity  </label>
+                    <div class="col-sm-9">
+                        <select id="Business" class="form-control">
+                            <option value="05">Budg ent (w/t school</option>
+                            <option value="28">Car repair shops</option>
+                            <option value="08">Contr.manuf. -other</option>
+                            <option value="07">Contr.manuf.electron</option>
+                            <option value="23">Education</option>
+                            <option value="02">Electr compon trade</option>
+                            <option value="04">Financial institutio</option>
+                            <option value="06">Individual</option>
+                            <option value="26">Installation service</option>
+                            <option value="22">IT sector</option>
+                            <option value="27">Maintenance</option>
+                            <option value="12">Manuf. machin. ind.</option>
+                            <option value="14">Manuf.automotive</option>
+                            <option value="19">Manuf.cables&amp;gro</option>
+                            <option value="11">Manuf.chem.industry</option>
+                            <option value="17">Manuf.cntrl.automat.</option>
+                            <option value="16">Manuf.electron.equip</option>
+                            <option value="10">Manuf.electrotech</option>
+                            <option value="15">Manuf.food.industry</option>
+                            <option value="09">Manuf.household appl</option>
+                            <option value="13">Manuf.metal.industry</option>
+                            <option value="20">Manuf.other</option>
+                            <option value="18">Manuf.power.equ.UPS</option>
+                            <option value="99">Others</option>
+                            <option value="01">Power engineering</option>
+                            <option value="21">Product design. R&amp;am</option>
+                            <option value="24">Telecommunication</option>
+                            <option value="25">Transport</option>
+                            <option value="03">Wholesale electric</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Main page</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Main page" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Currency </label>
+                    <div class="col-sm-9">
+                        <select id="Currency " class="form-control">
+                            <option>USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Delivery method  </label>
+                    <div class="col-sm-9">
+                        <select id="Currency " class="form-control">
+                            <option value="01">standard (UPS Saver/DHL Express Air) - 24.00 USD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Contact person</h4>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">First name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="firstName" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Last name*</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="LastName" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="Department" class="col-sm-3 control-label">Department</label>
+                    <div class="col-sm-9">
+                        <select id="Department" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="Position" class="col-sm-3 control-label">Position</label>
+                    <div class="col-sm-9">
+                        <select id="Position" class="form-control">
+                            <option value="">-- Select --</option>
+                            <option value="0003">Automation Dep.</option>
+                            <option value="0005">Bookkeeping Dep.</option>
+                            <option value="0007">Constructional Dep.</option>
+                            <option value="0011">Designing Dep.</option>
+                            <option value="0012">Electrical Dep.</option>
+                            <option value="0009">IT Dep.</option>
+                            <option value="0010">Logistic Dep.</option>
+                            <option value="0006">Marketing Dep.</option>
+                            <option value="9999">Others</option>
+                            <option value="0004">Production Dep.</option>
+                            <option value="0001">Purchasing Dep.</option>
+                            <option value="0013">Sales Dep.</option>
+                            <option value="0008">Service Dep.</option>
+                            <option value="0002">Technical Dep.</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="firstName" class="col-sm-3 control-label">Mobile phone</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Mobilephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Instant Messaging </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="InstantMessaging" class="form-control" name="email">
+                    </div>
+                </div>
+
+
+
+                <h4 class="registration-heading">DELIVERY ADDRESS (if different than above).Please do not use the PO box address.</h4>
+
+
+                <div class="form-group form-row">
+                    <label for="email" class="col-sm-3 control-label">Company name / First and last name</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Companyname" class="form-control" name="email">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Country</label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option>Afghanistan</option>
+                            <option>Bahamas</option>
+                            <option>Cambodia</option>
+                            <option>Denmark</option>
+                            <option>Ecuador</option>
+                            <option>Fiji</option>
+                            <option>Gabon</option>
+                            <option>Haiti</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">City </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="City" class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Postcode  </label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Postcode " class="form-control" autofocus>
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Address</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Address" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group form-row">
+                    <label for="lastName" class="col-sm-3 control-label">Telephone / FAX</label>
+                    <div class="col-sm-3">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                    <div class="col-sm-6">
+                        <input type="text" id="Telephone" class="form-control" autofocus>
+                    </div>
+                </div>
+
+
+                <div class="form-group form-row">
+                    <label for="country" class="col-sm-3 control-label">Language </label>
+                    <div class="col-sm-9">
+                        <select id="country" class="form-control">
+                            <option value="BG">-select-</option>
+                            <option value="HR">Croatian</option>
+                            <option value="CS">Czech</option>
+                            <option value="NL">Dutch</option>
+                            <option value="EN">English</option>
+                            <option value="FR">French</option>
+                            <option value="DE">German</option>
+                            <option value="EL">Greek</option>
+                            <option value="HU">Hungarian</option>
+                            <option value="IT">Italian</option>
+                            <option value="LT">lithuanian</option>
+                            <option value="PL">Polish</option>
+                            <option value="PT">Portuguese</option>
+                            <option value="RO">Romanian</option>
+                            <option value="RU">Russian</option>
+                            <option value="SK">Slovak</option>
+                            <option value="ES">Spanish</option>
+                        </select>
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Data to log in</h4>
+
+                <div class="form-group form-row">
+                    <label for="Login" class="col-sm-3 control-label">Login</label>
+                    <div class="col-sm-9">
+                        <input type="text" id="Login" class="form-control" name="Login">
+                    </div>
+                </div>
+
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group form-row">
+                    <label for="password" class="col-sm-3 control-label">Confirm Password*</label>
+                    <div class="col-sm-9">
+                        <input type="password" id="password" placeholder="Password" class="form-control">
+                    </div>
+                </div>
+
+                <h4 class="registration-heading">Electronic Newsletter</h4>
+                <h4>Electronic Newsletter consent</h4>
+                <p>I have read and understood the TME Newsletter Policy and I hereby give my consent to the sending of TME service's digital information newsletter to my email address.</p>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio" checked>I agree
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <label class="form-check-label">
+                        <input type="radio" class="form-check-input" name="optradio">I do not agree
+                    </label>
+                </div>
+                <h4 class="registration-heading mt-4">Terms</h4>
+                <button type="submit" class="btn btn-danger btn-sm">Send</button>
+            </form> <!-- /form -->
+
+        </div>
+    </div>
+
+</div>
+<script>    
+    $("#CompanyName").focusout(function () { callMethod("CompanyName", "Please enter company name"); });
+    $("#Username").focusout(function () { callMethod("Username", "Please enter Username"); });
+    $("#Password").focusout(function () { callMethod("Password", "Please enter Password"); });
+    $("#Email").focusout(function () { callMethod("Email", "Please enter Email"); });
+    $("#ConfirmPassword").focusout(function () { callMethod("ConfirmPassword", "Please enter Confirm Password"); });
+    $("#ContactFirstName").focusout(function () { callMethod("ContactFirstName", "Please enter first name"); });
+    $("#ContactLastName").focusout(function () { callMethod("ContactLastName", "Please enter last name"); });
+    function callMethod(elementPrefix,elementComment) {
+        
+        if ($('#' + elementPrefix).val() == '') {
+            $('#' + elementPrefix).css("border-color", "#FF0000");
+               // $('#btnSubmit').attr('disabled', true);
+            $('#error_' + elementPrefix).text(elementComment);            
+            }
+        else {
+            debugger;
+            if ((elementPrefix == "ConfirmPassword" || elementPrefix == "Password") && $("#Password").val() != $("#ConfirmPassword").val()) {
+                $("#Password").css("border-color", "#FF0000");
+                $("#ConfirmPassword").css("border-color", "#FF0000");
+               // $('#btnSubmit').attr('disabled', true);
+                $("#error_Password").text("Password and confirm password should be matched.");
+                $("#error_ConfirmPassword").text("Password and confirm password should be matched.");
+            }
+            else if (elementPrefix == "Email" && !isEmail($("#Email").val())) {
+
+                //debugger;
+                //var regex = "/^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/";
+                //return regex.test($("#Email").val());
+                $("#Email").css("border-color", "#FF0000");
+                //$('#btnSubmit').attr('disabled', true);
+                $("#error_Email").text("Please enter a valid email.");
+
+            }
+            else {
+                $('#' + elementPrefix).css("border-color", "");
+                //$('#btnSubmit').attr('disabled', false);
+                //$("#error_CompanyName").text("");
+                $('#error_' + elementPrefix).text("");
+                if (elementPrefix == "ConfirmPassword" || elementPrefix == "Password") {
+                    $("#error_Password").text("");
+                    $("#error_ConfirmPassword").text("");
+                    $("#Password").css("border-color", "");
+                    $("#ConfirmPassword").css("border-color", "");
+                }                
+            }
+            }                
+    }
+
+    $("#CountryId").change(function () {
+        $("#StateId").empty(); 
+        $("#CityId").empty();
+        $("#StateId").append('<option value=""> Select State</option>'); 
+        $("#CityId").append('<option value=""> Select City</option>'); 
+        debugger;
+        if ($("#CountryId").val()!="")
+            $.ajax({  
+                type: 'POST',  
+                url: '@Url.Action("GetState")',  
+                dataType: 'json',  
+                data: { id: $("#CountryId").val() },  
+                success: function (state) {  
+  
+                    $.each(state, function (i, state) {  
+                        $("#StateId").append('<option value="'  
+                            + state.Value + '">'  
+                            + state.Text + '</option>');  
+                    });  
+                },  
+                error: function (ex) {  
+                    alert('Failed.' + ex);  
+                }  
+            });  
+            return false;  
+    })
+
+    $("#StateId").change(function () {
+        $("#CityId").empty(); 
+        $("#CityId").append('<option value=""> Select City</option>'); 
+        if ($("#StateId").val() != "")
+            $.ajax({  
+                type: 'POST',  
+                url: '@Url.Action("GetCity")',  
+                dataType: 'json',  
+                data: { id: $("#StateId").val() },  
+                success: function (city) {  
+  
+                    $.each(city, function (i, city) {  
+                        $("#CityId").append('<option value="'  
+                            + city.Value + '">'  
+                            + city.Text + '</option>');  
+                    });  
+                },  
+                error: function (ex) {  
+                    alert('Failed.' + ex);  
+                }  
+            });  
+            return false;  
+    })
+
+    $("#btnSubmit").click(function () {
+        
+        //alert("Registration1 Submitted");
+        if ($("#CompanyName").val() == "" || $("#Username").val() == "" || $("#Password").val() == "" || $("#Email").val() == "" || $("#ConfirmPassword").val() == "" || $("#ContactFirstName").val() == "" ||
+            $("#ContactLastName").val() == "") {
+            callMethod("CompanyName", "Please enter company name");
+            callMethod("Username", "Please enter user name");
+            callMethod("Password", "Please enter password");
+            callMethod("Email", "Please enter email");
+            callMethod("ConfirmPassword", "Please enter confirm password");
+            callMethod("ContactFirstName", "Please enter first name");
+            callMethod("ContactLastName", "Please enter last name");
+            return false;
+        }
+        else if ($("#Password").val() != $("#ConfirmPassword").val()) {
+            $("#Password").css("border-color", "#FF0000");
+            $("#ConfirmPassword").css("border-color", "#FF0000");            
+            $("#error_Password").text("Password and confirm password should be matched.");
+            $("#error_ConfirmPassword").text("Password and confirm password should be matched.");
+            return false;
+        }
+        else if (!isEmail($("#Email").val())) {           
+            $("#Email").css("border-color", "#FF0000");           
+            $("#error_Email").text("Please enter a valid email."); 
+            return false;
+        }
+        var radioValue = $("input[name='optradio']:checked").val();
+        if (radioValue !="agree") {
+            alert("Please check on I agree");
+            return false;
+        }
+        debugger;
+        var username = $("#Username").val();
+        var password = $("#Password").val();
+        var email = $("#Email").val();
+        var address = $("#Address").val();
+        var country = $("#Country").val();
+        var city = $("#City").val();
+        var companyName = $("#CompanyName").val();
+        var fax = $("#FAX").val();
+        var countryVAT = $("#CountryVAT").val();
+        var language = $("#Language").val();
+        var businessActivity = $("#BusinessActivity").val();
+        var mainPage = $("#MainPage").val();
+        var currency = $("#Currency").val();
+        var deliveryMethod = $("#DeliveryMethod").val();
+        var phoneNumber = $("#PhoneNumber").val();
+        var zipCode = $("#ZipCode").val();
+
+        var countryId = $("#CountryId").val();
+        var stateId = $("#StateId").val();
+        var cityId = $("#CityId").val();
+
+        var contactFirstName = $("#ContactFirstName").val();
+        var contactLastName = $("#ContactLastName").val();
+        var contactDepartment = $("#ContactDepartment").val();
+        var contactPosition = $("#ContactPosition").val();
+        var contactTelephone = $("#ContactTelephone").val();
+        var contactFax = $("#ContactFax").val();
+        var contactMobile = $("#ContactMobile").val();
+        var contactInstantMessaging = $("#ContactInstantMessaging").val();
+
+        var deliveryCompanyName = $("#DeliveryCompanyName").val();
+        var deliveryCountry = $("#DeliveryCountry").val();
+        var deliveryCity = $("#DeliveryCity").val();
+        var deliveryZipCode = $("#DeliveryZipCode").val();
+        var deliveryAddress = $("#DeliveryAddress").val();
+        var deliveryTelephone = $("#DeliveryTelephone").val();
+        var deliveryFax = $("#DeliveryFax").val();
+        var deliveryLanguage = $("#DeliveryLanguage").val();
+        
+        
+        
+        var valdata = {
+            //CompanyName: companyName,
+            //City: city,
+            //ZipCode: zipCode,
+            //Address: address
+            Username: username,
+            Password: password,
+            Email: email,
+            Address: address,
+            Country: country,
+            City: city,
+            CompanyName: companyName,
+            FAX: fax,
+            CountryVAT: countryVAT,
+            Language: language,
+            BusinessActivity: businessActivity,
+            MainPage: mainPage,
+            Currency: currency,
+            DeliveryMethod: deliveryMethod,
+            PhoneNumber: phoneNumber,
+            ZipCode: zipCode,
+            CountryId: countryId,
+            StateId: stateId,
+            CityId: cityId,
+
+            ContactFirstName: contactFirstName,
+            ContactLastName: contactLastName,
+            ContactDepartment: contactDepartment,
+            ContactPosition: contactPosition,
+            ContactTelephone: contactTelephone,
+            ContactFax: contactFax,
+            ContactMobile: contactMobile,
+            ContactInstantMessaging: contactInstantMessaging,
+
+            DeliveryCompanyName: deliveryCompanyName,
+            DeliveryCountry: deliveryCountry,
+            DeliveryCity: deliveryCity,
+            DeliveryZipCode: deliveryZipCode,
+            DeliveryAddress: deliveryAddress,
+            DeliveryTelephone: deliveryTelephone,
+            DeliveryFax: deliveryFax,
+            DeliveryLanguage: deliveryLanguage
+        };
+        //var valdata = $("#Registration1").serialize();
+       //var abc= $("#Registration1").submit(); // Submit the form
+        $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("SignIn")',
+                    //data: valdata,
+                    data: valdata,
+                    dataType: "json",
+            success: function (data) {
+                //location.href = "/Account/SignIn";
+                //alert(data);  
+                //toastr.success('Added');
+                //toastr.success("Added", 'Success Alert', new { timeOut: 3000 });
+                if (data.success) {
+                    toastr.success(data.message, 'Success');
+                    location.href = "/Account/SignIn";
+                }
+                else {
+                    toastr.warning(data.message, 'Warning');
+                }
+                    },
+                    error: function () {
+                        //alert("Error while registration.");
+                        toastr.error('Error while registration.', 'Error');
+                    }
+                });
+
+    });
+    //$("#Registration1").submit(function () {
+    //    alert("Registration1 Submit");
+
+    //});
+    
+</script>

@@ -1,0 +1,324 @@
+﻿@model DNP.Models.Shopping.CartDetailsViewModel
+@{
+    ViewBag.Title = "CartDetails";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    double totalAmount = 0;
+}
+
+<!--Offcanvas menu area start-->
+
+<div class="off_canvars_overlay">
+
+</div>
+<div class="Offcanvas_menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="canvas_open">
+                    <a href="javascript:void(0)"><i class="ion-navicon"></i></a>
+                </div>
+                <div class="Offcanvas_menu_wrapper">
+                    <div class="canvas_close">
+                        <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
+                    </div>
+                    <div class="search-container">
+                        <form action="#">
+                            <div class="hover_category">
+                                <select class="select_option" name="select" id="categori2">
+                                    <option selected value="1">All</option>
+                                    <option value="2">Accessories</option>
+                                    <option value="3">Accessories</option>
+                                </select>
+                            </div>
+                            <div class="search_box">
+                                <input placeholder="Search product..." type="text">
+                                <button type="submit"><i class="zmdi zmdi-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="Offcanvas_tab">
+                        <ul class="nav nav-pills nav-justified" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#home">Primary Menu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#menu1">Product Menu</a>
+                            </li>
+
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="home" class="container tab-pane active">
+                                <br>
+                                <div id="menu" class="text-left ">
+                                    <ul class="offcanvas_main_menu">
+                                        <li class="menu-item-has-children active">
+                                            <a href="#">Home</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="">Home 1</a></li>
+                                                <li><a href="">Home 2</a></li>
+                                                <li><a href="">Home 3</a></li>
+                                                <li><a href="">Home 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Shop</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">blog</a>
+                                        </li>
+
+                                        <li class="menu-item-has-children">
+                                            <a href="">about Us</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href=""> Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="menu1" class="container tab-pane fade">
+                                <br>
+                                <div id="menu2" class="text-left ">
+                                    <ul class="offcanvas_main_menu">
+                                        <li class="menu-item-has-children active">
+                                            <a href="#">Semiconductors</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                <li><a href="#">Discrete</a></li>
+                                                <li><a href="#">Embedded Computers</a></li>
+                                                <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                <li><a href="#"> Isolators</a></li>
+                                                <li><a href="#">LED/Optoelectronics</a></li>
+                                                <li><a href="#">RF, Wireless</a></li>
+                                                <li><a href="#">RF, Wireless</a></li>
+                                                <li><a href="#">Sensors, Transducers</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Passives</a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-children">
+                                                    <a href="#">Capacitors</a>
+                                                    <ul class="sub-menu">
+                                                        <li><a href="#">Development Boards, Kits, Programmers</a></li>
+                                                        <li class="menu-item-has-children">
+                                                            <a href="#">Discrete</a>
+                                                            <ul class="sub-menu">
+                                                                <li><a href="#">Embedded Computers</a></li>
+                                                                <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                                <li><a href="#"> Isolators</a></li>
+                                                                <li><a href="#">LED/Optoelectronics</a></li>
+                                                                <li><a href="#">RF, Wireless</a></li>
+                                                                <li><a href="#">RF, Wireless</a></li>
+                                                                <li><a href="#">Sensors, Transducers</a></li>
+                                                            </ul>
+
+                                                        </li>
+                                                        <li><a href="#">Embedded Computers</a></li>
+                                                        <li><a href="#">Integrated Circuits (ICs)</a></li>
+                                                        <li><a href="#"> Isolators</a></li>
+                                                        <li><a href="#">LED/Optoelectronics</a></li>
+                                                        <li><a href="#">RF, Wireless</a></li>
+                                                        <li><a href="#">RF, Wireless</a></li>
+                                                        <li><a href="#">Sensors, Transducers</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">Crystals, Oscillators</a></li>
+                                                <li><a href="#">Filters</a></li>
+                                                <li><a href="#"> Inductors, Coils, Chokes</a></li>
+                                                <li><a href="#">Potentiometers, Variable Resistors</a></li>
+                                                <li><a href="#">Resistors</a></li>
+                                                <li><a href="#">Thermal Management</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Electromechanical</a>
+                                        </li>
+
+                                        <li class="menu-item-has-children">
+                                            <a href="">Power, Circuit Protection</a>
+                                        </li>
+                                        <li class="menu-item-has-children">
+                                            <a href=""> Contact Us</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="Offcanvas_footer">
+                        <span><a href="#"><i class="fa fa-envelope-o"></i> info@Electronic.com</a></span>
+                        <ul>
+                            <li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li class="pinterest"><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                            <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Offcanvas menu area end-->
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumb_content">
+                    <ul>
+                        <li><a href="index.html">home</a></li>
+                        <li>Shopping Cart</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--breadcrumbs area end-->
+<!--shopping cart area start -->
+<div class="shopping_cart_area mt-60">
+    <div class="container">
+        <form action="#">
+            <div class="row">
+                <div class="col-12">
+                    <div class="table_desc">
+                        <div class="cart_page table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product_remove">Delete</th>
+                                        <th class="product_thumb">Image</th>
+                                        <th class="product_name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product_quantity">Quantity</th>
+                                        <th class="product_total">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model!=null)
+                                    {
+                                        foreach (var item in Model.ProductList)
+                                        {
+                                            var amount = item.BaseAmount * item.ProductCount;
+                                            totalAmount += amount;
+                                            <tr>
+                                                <td class="product_remove"><a onclick="RemoveCartItem('@item.Symbol')"><i class="fa fa-trash-o"></i></a></td>
+                                                <td class="product_thumb"><a href="#"><img src="@item.Thumbnail" alt=""></a></td>
+                                                <td class="product_name"><a href="/Shopping/ProductDetails/@item.Symbol">@item.Symbol</a></td>
+                                                <td class="product-price">@item.BaseAmount</td>
+                                                <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="@item.ProductCount" type="number"></td>
+                                                <td class="product_total">@amount</td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                    <tr>
+                                        <td>No item in cart</td>                                        
+                                    </tr>
+                                    }
+
+                                    @*<tr>
+            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+            <td class="product_thumb"><a href="#"><img src="assets/img/product.jpg" alt=""></a></td>
+            <td class="product_name"><a href="#">Handbags justo</a></td>
+            <td class="product-price">£90.00</td>
+            <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
+            <td class="product_total">£180.00</td>
+
+
+        </tr>
+        <tr>
+            <td class="product_remove"><a href="#"><i class="fa fa-trash-o"></i></a></td>
+            <td class="product_thumb"><a href="#"><img src="assets/img/product.jpg" alt=""></a></td>
+            <td class="product_name"><a href="#">Handbag elit</a></td>
+            <td class="product-price">£80.00</td>
+            <td class="product_quantity"><label>Quantity</label> <input min="1" max="100" value="1" type="number"></td>
+            <td class="product_total">£160.00</td>
+
+
+        </tr>*@
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="cart_submit">
+                            <button class="btn btn-danger btn-md order-btn" type="submit">update cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--coupon code area start-->
+            <div class="coupon_area">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code left">
+                            <h3>Coupon</h3>
+                            <div class="coupon_inner">
+                                <p>Enter your coupon code if you have one.</p>
+                                <input placeholder="Coupon code" type="text">
+                                <button type="submit">Apply coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="coupon_code right">
+                            <h3>Cart Totals</h3>
+                            <div class="coupon_inner">
+                                <div class="cart_subtotal">
+                                    <p>Subtotal</p>
+                                    <p class="cart_amount">@totalAmount</p>
+                                </div>
+                                <div class="cart_subtotal ">
+                                    <p>Shipping</p>
+                                    <p class="cart_amount"><span>Flat Rate:</span> @totalAmount</p>
+                                </div>
+                                <a href="#">Calculate shipping</a>
+
+                                <div class="cart_subtotal">
+                                    <p>Total</p>
+                                    <p class="cart_amount">@totalAmount</p>
+                                </div>
+                                <div class="checkout_btn">
+                                    <a href="" onclick="IsLogin()" class="btn btn-danger btn-md order-btn">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--coupon code area end-->
+        </form>
+    </div>
+</div>
+<!--shopping cart area end -->
+<script>
+    function RemoveCartItem(symbol) {
+        debugger;
+         var valdata = {
+            id: symbol
+        };
+        
+        $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("RemoveFromCart", "Shopping")',
+                    data: valdata,
+                    dataType: "json",
+                    success: function () {
+                        //alert("added product to cart");
+                        toastr.success("Product remove from cart", 'Success');
+                        location.href = "/Shopping/CartDetails";
+                    },
+                    error: function () {
+                        //alert("Error while registration.");
+                        toastr.error("Product added to cart", 'Error');
+                    }
+                });
+    }
+</script>

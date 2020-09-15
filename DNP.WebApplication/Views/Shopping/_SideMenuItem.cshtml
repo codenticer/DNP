@@ -1,0 +1,35 @@
+﻿@model DNP.Models.Shopping.MainClassViewModel
+
+@foreach (var item in Model.Data.CategoryTree.SubTree)
+{
+    @*<div class="col-md-3 col-sm-3 col-6">
+            <div class="img-section">
+                <a href="~/Shopping/ProductList/@item.Id">@item.Name (@item.TotalProducts)</a>
+                <img src="@item.Thumbnail" class="img-fluid img-thumbnail" alt="San Fran">
+            </div>
+        </div>*@
+
+    <div class="col-lg-3 col-md-4  col-sm-6 mt-2">
+
+        <div class="media">
+            <div class="img-section">
+                <p><a href="~/Shopping/ProductList/@item.Id">@item.Name (@item.TotalProducts)</a></p>
+                <img src="@item.Thumbnail" class="align-self-start img-fluid img-thumbnail mr-3" alt="San Fran">
+            </div>
+
+            @foreach (var data in item.Subtree)
+            {
+                <div class="media-body mt-4">
+                    <div class="list-group list-group-flush list-cat">
+
+                        <a href="" class="list-group-item p-1 ">@data.Name (@data.TotalProducts)</a>
+
+                    </div>
+
+                </div><br />
+
+            }
+        </div>
+    </div>
+}
+
